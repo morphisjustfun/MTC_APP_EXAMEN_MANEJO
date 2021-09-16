@@ -8,6 +8,9 @@ import {
   Dimensions,
 } from 'react-native';
 import {colors} from './utils/colors';
+import {getConvertedDate} from './utils/utils';
+
+import RNLocation, {Subscription, Location} from 'react-native-location';
 
 const containerStyles = StyleSheet.create({
   containerTopBar: {
@@ -29,13 +32,11 @@ const containerStyles = StyleSheet.create({
     backgroundColor: colors.red,
     borderTopLeftRadius: 200,
     borderTopRightRadius: 200,
-    transform: [
-      {scaleX: 1.5}
-    ]
+    transform: [{scaleX: 1.5}],
   },
   generalContainer: {
     flex: 1,
-    backgroundColor: 'white',  
+    backgroundColor: 'white',
   },
 });
 
@@ -45,39 +46,41 @@ const arrowStyles = StyleSheet.create({
     height: 100,
     backgroundColor: 'white',
   },
-  
+
   triangleDown: {
     width: 0,
     height: 0,
-    backgroundColor: "transparent",
-    borderStyle: "solid",
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
     borderLeftWidth: 25,
     borderRightWidth: 25,
     borderBottomWidth: 50,
-    borderLeftColor: "transparent",
-    borderRightColor: "transparent",
-    borderBottomColor: "white",
-    transform: [{ rotate: "180deg" }],
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: 'white',
+    transform: [{rotate: '180deg'}],
   },
-})
+});
 
 const topBarStyles = StyleSheet.create({
   logo: {
     flex: 0.35,
     marginLeft: 12,
+    maxHeight: 60,
   },
   divider: {
-    width: 100,
     height: 45,
     backgroundColor: '#FFFFFF',
     flex: 0.005,
     marginRight: 12,
-    marginLeft: 12
+    marginLeft: 12,
+    maxWidth: 2,
   },
   textAfterLogo: {
     flex: 0.645,
     color: '#FFFFFF',
-    marginRight: 12
+    marginRight: 12,
+    fontSize: 14,
   },
 });
 
@@ -90,7 +93,7 @@ const textStyles = StyleSheet.create({
     lineHeight: 38,
     letterSpacing: 0,
     textAlign: 'center',
-    padding: 10
+    padding: 10,
   },
 
   location: {
@@ -111,20 +114,66 @@ const textStyles = StyleSheet.create({
     lineHeight: 28,
     letterSpacing: 0,
     textAlign: 'center',
-    color: 'white'
-  }
-})
+    color: 'white',
+  },
+});
 
 const App = () => {
-  const date = new Date();
-  console.log(date.getHours());
-  console.log(date.getMinutes());
   const [counterTime, setCounterTime] = React.useState(0);
+  const [geoPermission, setGeoPermission] = React.useState(false);
+
+  const getLocationCallBack = (locations: Location[]) => {
+    console.log(locations);
+  };
+
   React.useEffect(() => {
     setTimeout(() => {
-      setCounterTime(counterTime +1);
-    },1000)
-  },[counterTime]);
+      setCounterTime(counterTime + 1);
+    }, 1000);
+  }, [counterTime]);
+  React.useEffect(() => {
+    let subscription: Subscription;
+    RNLocation.configure({
+      distanceFilter: 100, // Meters
+      desiredAccuracy: {
+        ios: 'best',
+        android: 'balancedPowerAccuracy',
+      },
+      // Android only
+      androidProvider: 'auto',
+      interval: 5000, // Milliseconds
+      fastestInterval: 10000, // Milliseconds
+      maxWaitTime: 5000, // Milliseconds
+      // iOS Only
+      activityType: 'other',
+      allowsBackgroundLocationUpdates: false,
+      headingFilter: 1, // Degrees
+      headingOrientation: 'portrait',
+      pausesLocationUpdatesAutomatically: false,
+      showsBackgroundLocationIndicator: false,
+    });
+    RNLocation.getCurrentPermission().then(currentPermission => {
+      if (currentPermission.startsWith('authorized')) {
+        setGeoPermission(true);
+        subscription =
+        RNLocation.subscribeToLocationUpdates((locations) => {
+              });
+        return subscription();
+      }
+      RNLocation.requestPermission({
+        ios: 'whenInUse',
+        android: {
+          detail: 'coarse',
+        },
+      }).then(granted => {
+        setGeoPermission(true);
+        subscription =
+          RNLocation.subscribeToLocationUpdates(getLocationCallBack);
+        return subscription();
+      });
+    });
+  }, []);
+  const date = new Date();
   return (
     <View style={containerStyles.generalContainer}>
       <View style={containerStyles.containerTopBar}>
@@ -133,17 +182,21 @@ const App = () => {
           style={topBarStyles.logo}
           resizeMode="contain"
         />
-        <View style={topBarStyles.divider}/>
+        <View style={topBarStyles.divider} />
         <Text style={topBarStyles.textAfterLogo}>
           Plataforma digital única del Estado Peruano
         </Text>
       </View>
       <View style={containerStyles.containerTitle}>
-        <Text style={textStyles.title}>Sistema de examen de manejo en vía pública</Text>
-        <Text style={textStyles.location}>Place holder {counterTime}</Text>
+        <Text style={textStyles.title}>
+          Sistema de examen de manejo en vía pública
+        </Text>
+        <Text style={textStyles.location}>{getConvertedDate(date)}</Text>
       </View>
       <View style={containerStyles.left}>
-        <Text style={textStyles.identifier}>IDENTIFIQUESE</Text>
+        <Text style={textStyles.identifier}>
+          IDENTIFIQUESE {geoPermission ? 'GPS' : 'NOGPS'}
+        </Text>
         <View style={arrowStyles.rect}></View>
         <View style={arrowStyles.triangleDown}></View>
       </View>

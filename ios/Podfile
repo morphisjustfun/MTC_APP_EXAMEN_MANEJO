@@ -12,6 +12,8 @@ target 'MTC_APP_EXAMEN_MANEO' do
     :hermes_enabled => false
   )
 
+  pod 'react-native-location', :path => '../node_modules/react-native-location'
+
   target 'MTC_APP_EXAMEN_MANEOTests' do
     inherit! :complete
     # Pods for testing
