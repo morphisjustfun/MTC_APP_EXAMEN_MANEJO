@@ -1,16 +1,10 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  SafeAreaView,
-  StyleSheet,
-  Image,
-  Dimensions,
-} from 'react-native';
+import {Text, View, StyleSheet, Image, Dimensions} from 'react-native';
 import {colors} from './utils/colors';
-import {getConvertedDate} from './utils/utils';
+import {getConvertedDate, getLastLocation, geoDecode} from './utils/utils';
 
 import RNLocation, {Subscription, Location} from 'react-native-location';
+import {Address} from './utils/types';
 
 const containerStyles = StyleSheet.create({
   containerTopBar: {
@@ -121,9 +115,17 @@ const textStyles = StyleSheet.create({
 const App = () => {
   const [counterTime, setCounterTime] = React.useState(0);
   const [geoPermission, setGeoPermission] = React.useState(false);
+  const [gpsLocation, setGpsLocation] = React.useState<Address | undefined>(
+    undefined,
+  );
 
-  const getLocationCallBack = (locations: Location[]) => {
-    console.log(locations);
+  const getLocationCallBack = async (locations: Location[]) => {
+    const lastLocation = getLastLocation(locations);
+    const address = await geoDecode(
+      lastLocation.latitude,
+      lastLocation.longitude,
+    );
+    setGpsLocation(address.address);
   };
 
   React.useEffect(() => {
@@ -131,6 +133,7 @@ const App = () => {
       setCounterTime(counterTime + 1);
     }, 1000);
   }, [counterTime]);
+
   React.useEffect(() => {
     let subscription: Subscription;
     RNLocation.configure({
@@ -151,29 +154,31 @@ const App = () => {
       headingOrientation: 'portrait',
       pausesLocationUpdatesAutomatically: false,
       showsBackgroundLocationIndicator: false,
-    });
-    RNLocation.getCurrentPermission().then(currentPermission => {
-      if (currentPermission.startsWith('authorized')) {
-        setGeoPermission(true);
-        subscription =
-        RNLocation.subscribeToLocationUpdates((locations) => {
-              });
-        return subscription();
-      }
-      RNLocation.requestPermission({
-        ios: 'whenInUse',
-        android: {
-          detail: 'coarse',
-        },
-      }).then(granted => {
-        setGeoPermission(true);
-        subscription =
-          RNLocation.subscribeToLocationUpdates(getLocationCallBack);
-        return subscription();
+    }).then(() => {
+      RNLocation.getCurrentPermission().then(currentPermission => {
+        if (currentPermission.startsWith('authorized')) {
+          setGeoPermission(true);
+          subscription =
+            RNLocation.subscribeToLocationUpdates(getLocationCallBack);
+          return subscription;
+        }
+        RNLocation.requestPermission({
+          ios: 'whenInUse',
+          android: {
+            detail: 'coarse',
+          },
+        }).then(granted => {
+          setGeoPermission(granted);
+          if (granted) {
+            subscription =
+              RNLocation.subscribeToLocationUpdates(getLocationCallBack);
+            return subscription;
+          }
+        });
       });
     });
   }, []);
-  const date = new Date();
+  const currentDate = new Date();
   return (
     <View style={containerStyles.generalContainer}>
       <View style={containerStyles.containerTopBar}>
@@ -191,12 +196,10 @@ const App = () => {
         <Text style={textStyles.title}>
           Sistema de examen de manejo en vía pública
         </Text>
-        <Text style={textStyles.location}>{getConvertedDate(date)}</Text>
+        <Text style={textStyles.location}>{gpsLocation?.house_number!}, {gpsLocation?.road}, {gpsLocation?.city}, {gpsLocation?.country} {getConvertedDate(currentDate)}</Text>
       </View>
       <View style={containerStyles.left}>
-        <Text style={textStyles.identifier}>
-          IDENTIFIQUESE {geoPermission ? 'GPS' : 'NOGPS'}
-        </Text>
+        <Text style={textStyles.identifier}>IDENTIFIQUESE</Text>
         <View style={arrowStyles.rect}></View>
         <View style={arrowStyles.triangleDown}></View>
       </View>
