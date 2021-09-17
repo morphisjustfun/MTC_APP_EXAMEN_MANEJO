@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, Image, Dimensions} from 'react-native';
+import {Text, View, StyleSheet, Image, Dimensions, Animated, TouchableOpacity, TouchableWithoutFeedback} from 'react-native';
 import {colors} from './utils/colors';
 import {getConvertedDate, getLastLocation, geoDecode} from './utils/utils';
 
@@ -112,12 +112,43 @@ const textStyles = StyleSheet.create({
   },
 });
 
+const Arrow = () => {
+  const [state, setState] = React.useState(new Animated.Value(0));
+
+  const arrowAnimation = () => {
+    Animated.timing(state, {
+      toValue: 2000,
+      duration: 2500,
+      useNativeDriver: true, 
+    }).start()
+  };
+
+  const arrowAnimationStyle = {
+    marginTop: state,
+  };
+
+  return (
+    <>
+    <TouchableOpacity 
+    onPress={() => {
+      console.log("asd");
+      arrowAnimation();
+    }}
+    >
+    <Animated.View style={[arrowStyles.rect, arrowAnimationStyle]}></Animated.View>
+    </TouchableOpacity>
+    <View style={arrowStyles.triangleDown}></View>
+    </>
+  )
+}
+
 const App = () => {
   const [counterTime, setCounterTime] = React.useState(0);
   const [geoPermission, setGeoPermission] = React.useState(false);
   const [gpsLocation, setGpsLocation] = React.useState<Address | undefined>(
     undefined,
   );
+
 
   const getLocationCallBack = async (locations: Location[]) => {
     const lastLocation = getLastLocation(locations);
@@ -127,6 +158,8 @@ const App = () => {
     );
     setGpsLocation(address.address);
   };
+
+  
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -196,12 +229,14 @@ const App = () => {
         <Text style={textStyles.title}>
           Sistema de examen de manejo en vía pública
         </Text>
-        <Text style={textStyles.location}>{gpsLocation?.house_number!}, {gpsLocation?.road}, {gpsLocation?.city}, {gpsLocation?.country} {getConvertedDate(currentDate)}</Text>
+        <Text style={textStyles.location}> {gpsLocation?.road}, {gpsLocation?.city}, {gpsLocation?.country} </Text>
+        <Text style={textStyles.location}>
+        {getConvertedDate(currentDate)}
+        </Text>
       </View>
       <View style={containerStyles.left}>
         <Text style={textStyles.identifier}>IDENTIFIQUESE</Text>
-        <View style={arrowStyles.rect}></View>
-        <View style={arrowStyles.triangleDown}></View>
+        <Arrow/>
       </View>
     </View>
   );
