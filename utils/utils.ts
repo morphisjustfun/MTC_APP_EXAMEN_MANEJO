@@ -1,11 +1,15 @@
 import {Location} from 'react-native-location';
 import {GeoDecode} from './types';
 
+const getFormattedTime = (target: number) => {
+  return `${target >= 10 ? target.toString() : `0${target}`}`;
+};
+
 export const getConvertedDate = (date: Date) => {
   const seconds = date.getSeconds();
   const minutes = date.getMinutes();
   const hours = date.getHours();
-  return `${hours}:${minutes}:${seconds}`;
+  return `${getFormattedTime(hours)}:${getFormattedTime(minutes)}:${getFormattedTime(seconds)}`;
 };
 
 export const getLastLocation = (locations: Location[]) => {

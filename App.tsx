@@ -1,5 +1,14 @@
 import React from 'react';
-import {Text, View, StyleSheet, Image, Dimensions, Animated, TouchableOpacity, TouchableWithoutFeedback} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  Dimensions,
+  Animated,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {colors} from './utils/colors';
 import {getConvertedDate, getLastLocation, geoDecode} from './utils/utils';
 
@@ -35,13 +44,13 @@ const containerStyles = StyleSheet.create({
 });
 
 const arrowStyles = StyleSheet.create({
-  rect: {
+  arrowRect: {
     width: 20,
     height: 100,
     backgroundColor: 'white',
   },
 
-  triangleDown: {
+  arrowTriangleDown: {
     width: 0,
     height: 0,
     backgroundColor: 'transparent',
@@ -53,6 +62,10 @@ const arrowStyles = StyleSheet.create({
     borderRightColor: 'transparent',
     borderBottomColor: 'white',
     transform: [{rotate: '180deg'}],
+  },
+  triangleContainer: {
+    flex: 1,
+    alignItems:'center',
   },
 });
 
@@ -100,7 +113,7 @@ const textStyles = StyleSheet.create({
   },
 
   identifier: {
-    marginTop: 40,
+    marginTop: 80,
     marginBottom: 40,
     fontSize: 24,
     fontStyle: 'italic',
@@ -110,37 +123,45 @@ const textStyles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
   },
+
 });
 
 const Arrow = () => {
   const [state, setState] = React.useState(new Animated.Value(0));
+  const [counter, setCounter] = React.useState(0);
 
-  const arrowAnimation = () => {
-    Animated.timing(state, {
-      toValue: 2000,
-      duration: 2500,
-      useNativeDriver: true, 
-    }).start()
-  };
+  const cycleLength = 2000;
+
+  React.useEffect(() => {
+    (() => {
+      Animated.timing(state, {
+        toValue: 30,
+        duration: cycleLength,
+        useNativeDriver: false,
+      }).start(() => {
+        Animated.timing(state, {
+          toValue: 0,
+          duration: cycleLength,
+          useNativeDriver: false,
+        }).start(() => {
+          setCounter(counter + 1);
+        });
+      });
+    })();
+  }, [counter]);
 
   const arrowAnimationStyle = {
     marginTop: state,
   };
 
   return (
-    <>
-    <TouchableOpacity 
-    onPress={() => {
-      console.log("asd");
-      arrowAnimation();
-    }}
-    >
-    <Animated.View style={[arrowStyles.rect, arrowAnimationStyle]}></Animated.View>
-    </TouchableOpacity>
-    <View style={arrowStyles.triangleDown}></View>
-    </>
-  )
-}
+    <View style={arrowStyles.triangleContainer}>
+      <Animated.View
+        style={[arrowStyles.arrowRect, arrowAnimationStyle]}></Animated.View>
+      <View style={arrowStyles.arrowTriangleDown}></View>
+    </View>
+  );
+};
 
 const App = () => {
   const [counterTime, setCounterTime] = React.useState(0);
@@ -148,7 +169,6 @@ const App = () => {
   const [gpsLocation, setGpsLocation] = React.useState<Address | undefined>(
     undefined,
   );
-
 
   const getLocationCallBack = async (locations: Location[]) => {
     const lastLocation = getLastLocation(locations);
@@ -158,8 +178,6 @@ const App = () => {
     );
     setGpsLocation(address.address);
   };
-
-  
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -229,14 +247,15 @@ const App = () => {
         <Text style={textStyles.title}>
           Sistema de examen de manejo en vía pública
         </Text>
-        <Text style={textStyles.location}> {gpsLocation?.road}, {gpsLocation?.city}, {gpsLocation?.country} </Text>
         <Text style={textStyles.location}>
-        {getConvertedDate(currentDate)}
+          {' '}
+          {gpsLocation?.road}, {gpsLocation?.city}, {gpsLocation?.country}{' '}
         </Text>
+        <Text style={textStyles.location}>{getConvertedDate(currentDate)}</Text>
       </View>
       <View style={containerStyles.left}>
         <Text style={textStyles.identifier}>IDENTIFIQUESE</Text>
-        <Arrow/>
+        <Arrow />
       </View>
     </View>
   );
