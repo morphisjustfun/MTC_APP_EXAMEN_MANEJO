@@ -248,8 +248,7 @@ const App = () => {
           Sistema de examen de manejo en vía pública
         </Text>
         <Text style={textStyles.location}>
-          {' '}
-          {gpsLocation?.road}, {gpsLocation?.city}, {gpsLocation?.country}{' '}
+          {gpsLocation?.road}, {gpsLocation?.city}, {gpsLocation?.country}
         </Text>
         <Text style={textStyles.location}>{getConvertedDate(currentDate)}</Text>
       </View>
