@@ -63,7 +63,7 @@ export const topBarStyles = StyleSheet.create({
   },
   divider: {
     height: 45,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
     flex: 0.005,
     marginRight: 12,
     marginLeft: 12,
@@ -71,7 +71,7 @@ export const topBarStyles = StyleSheet.create({
   },
   textAfterLogo: {
     flex: 0.645,
-    color: '#FFFFFF',
+    color: colors.white,
     marginRight: 12,
     fontSize: 14,
   },

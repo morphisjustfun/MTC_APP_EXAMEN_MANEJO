@@ -4,8 +4,11 @@
 
 import {Navigation} from 'react-native-navigation';
 import App from './components/App';
+import {pages} from './constants/pages';
+import UserInfoPage from './components/UserInfoPage';
 
-Navigation.registerComponent('com.MTC.manejo',() => App)
+Navigation.registerComponent(pages.APP,() => App)
+Navigation.registerComponent(pages.USERINFOPAGE,() => UserInfoPage)
 Navigation.events().registerAppLaunchedListener(() => {
    Navigation.setRoot({
       root:{

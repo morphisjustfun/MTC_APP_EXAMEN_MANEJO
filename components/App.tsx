@@ -1,15 +1,25 @@
-import React from 'react';
+import React, {FC} from 'react';
+import {Animated, Image, Text, View, TouchableOpacity} from 'react-native';
+import RNLocation, {Location, Subscription} from 'react-native-location';
+import {Address} from '../utils/types';
 import {
-    Animated, Image, Text,
-    View
-} from 'react-native';
-import RNLocation, { Location, Subscription } from 'react-native-location';
-import { Address } from '../utils/types';
-import { geoDecode, getConvertedDate, getConvertedLocation, getLastLocation } from '../utils/utils';
-import {containerStyles, arrowStyles, topBarStyles, textStyles} from '../styles/App';
+  geoDecode,
+  getConvertedDate,
+  getConvertedLocation,
+  getLastLocation,
+} from '../utils/utils';
+import {
+  containerStyles,
+  arrowStyles,
+  topBarStyles,
+  textStyles,
+} from '../styles/App';
+import {NavigationFunctionComponent, Navigation} from 'react-native-navigation';
+import {ArrowProps} from '../types/App';
+import { pages } from '../constants/pages';
 
-const Arrow = () => {
-  const [state, setState] = React.useState(new Animated.Value(0));
+const Arrow: FC<ArrowProps> = props => {
+  const [state] = React.useState(new Animated.Value(0));
   const [counter, setCounter] = React.useState(0);
 
   const cycleLength = 2000;
@@ -36,16 +46,25 @@ const Arrow = () => {
     marginTop: state,
   };
 
+  // TODO Implement auth with external fingerprint
   return (
-    <View style={arrowStyles.triangleContainer}>
+    <TouchableOpacity
+      style={arrowStyles.triangleContainer}
+      onPress={() => {
+        Navigation.push(props.componentId, {
+          component: {
+            name: pages.USERINFOPAGE,
+          },
+        });
+      }}>
       <Animated.View
         style={[arrowStyles.arrowRect, arrowAnimationStyle]}></Animated.View>
       <View style={arrowStyles.arrowTriangleDown}></View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
-const App = () => {
+const App: NavigationFunctionComponent = props => {
   const [counterTime, setCounterTime] = React.useState(0);
   const [geoPermission, setGeoPermission] = React.useState(false);
   const [gpsLocation, setGpsLocation] = React.useState<Address | undefined>(
@@ -136,7 +155,7 @@ const App = () => {
       </View>
       <View style={containerStyles.left}>
         <Text style={textStyles.identifier}>IDENTIFIQUESE</Text>
-        <Arrow />
+        <Arrow componentId={props.componentId} />
       </View>
     </View>
   );
