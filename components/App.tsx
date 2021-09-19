@@ -16,7 +16,9 @@ import {
 } from '../styles/App';
 import {NavigationFunctionComponent, Navigation} from 'react-native-navigation';
 import {ArrowProps} from '../types/App';
-import { pages } from '../constants/pages';
+import {pages} from '../constants/pages';
+import LogoTopBar from '../utils/components/LogoTopBar';
+import {UserInfoProps} from '../types/UserInfoPage';
 
 const Arrow: FC<ArrowProps> = props => {
   const [state] = React.useState(new Animated.Value(0));
@@ -51,9 +53,12 @@ const Arrow: FC<ArrowProps> = props => {
     <TouchableOpacity
       style={arrowStyles.triangleContainer}
       onPress={() => {
-        Navigation.push(props.componentId, {
+        Navigation.push<UserInfoProps>(props.componentId, {
           component: {
             name: pages.USERINFOPAGE,
+            passProps: {
+              dni: '01234567',
+            },
           },
         });
       }}>
@@ -133,17 +138,7 @@ const App: NavigationFunctionComponent = props => {
   const currentDate = new Date();
   return (
     <View style={containerStyles.generalContainer}>
-      <View style={containerStyles.containerTopBar}>
-        <Image
-          source={require('../assets/images/escudo.png')}
-          style={topBarStyles.logo}
-          resizeMode="contain"
-        />
-        <View style={topBarStyles.divider} />
-        <Text style={topBarStyles.textAfterLogo}>
-          Plataforma digital única del Estado Peruano
-        </Text>
-      </View>
+      <LogoTopBar />
       <View style={containerStyles.containerTitle}>
         <Text style={textStyles.title}>
           Sistema de examen de manejo en vía pública
