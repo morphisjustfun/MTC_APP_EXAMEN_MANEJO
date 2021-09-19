@@ -7,11 +7,13 @@ import {
   userCardStyles,
 } from '../styles/UserInfoPage';
 import LogoTopBar from '../utils/components/LogoTopBar';
-import {NavigationFunctionComponent} from 'react-native-navigation';
+import {NavigationFunctionComponent, Navigation} from 'react-native-navigation';
 import {UserInfoProps} from '../types/UserInfoPage';
 import {User, UserType} from '../utils/requests/user';
 import {CustomButton} from '../utils/components/Button';
 import {colors} from '../utils/colors';
+import {pages} from '../constants/pages';
+import {TimerPageProps} from '../types/TimerPage';
 
 const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
   const [user, setUser] = React.useState<UserType | undefined>(undefined);
@@ -68,7 +70,19 @@ const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
             <View style={userCardStyles.divider} />
           </View>
           <View style={containerStyles.containerButton}>
-            <CustomButton title="CONTINUAR" action={() => {}} />
+            <CustomButton
+              title="CONTINUAR"
+              action={() => {
+                Navigation.push<TimerPageProps>(props.componentId, {
+                  component: {
+                    name: pages.TIMERPAGE,
+                    passProps: {
+                      dni: props.dni,
+                    },
+                  },
+                });
+              }}
+            />
           </View>
         </>
       )}

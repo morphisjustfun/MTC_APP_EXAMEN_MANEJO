@@ -44,8 +44,19 @@ export const geoDecode = async (
 };
 
 export const getConvertedLocation = (location: Address | undefined) => {
-   if (location?.road && location?.city && location?.country){
-      return `${location.road}, ${location.city}, ${location.country}`
-   }
-   return ''
+  if (location?.road && location?.city && location?.country) {
+    return `${location.road}, ${location.city}, ${location.country}`;
+  }
+  return '';
+};
+
+export const getConvertedTimer = (secondsTarget: number) => {
+  const seconds = secondsTarget % 60;
+  let minutes = (secondsTarget - seconds) / 60;
+  const oldMinutes = minutes;
+  minutes = minutes % 60;
+  const hours = (oldMinutes - minutes) / 60;
+  return `${getFormattedTime(hours)}:${getFormattedTime(
+    minutes,
+  )}:${getFormattedTime(seconds)}`;
 };

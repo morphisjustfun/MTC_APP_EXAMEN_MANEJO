@@ -48,13 +48,12 @@ export const userCardStyles = StyleSheet.create({
   textBox: {
     flex: 0.32,
     flexDirection: 'row',
-    marginLeft: 18,
-    marginRight: 18
+    marginHorizontal: 18
   },
   key: {
     flex: 0.25,
     justifyContent: 'center',
-    marginRight: 8
+    marginRight: 10
   },
   value: {
     flex: 0.75,
