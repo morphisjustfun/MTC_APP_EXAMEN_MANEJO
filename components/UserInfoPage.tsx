@@ -44,7 +44,7 @@ const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
                 <Text style={userCardStyles.valueText}>Nombre</Text>
               </View>
               <View style={userCardStyles.value}>
-                <Text style={userCardStyles.keyText}> {user?.name} </Text>
+                <Text style={userCardStyles.keyText}>{user?.name}</Text>
               </View>
             </View>
             <View style={userCardStyles.divider} />
@@ -53,7 +53,7 @@ const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
                 <Text style={userCardStyles.valueText}>DNI</Text>
               </View>
               <View style={userCardStyles.value}>
-                <Text style={userCardStyles.keyText}> {props.dni} </Text>
+                <Text style={userCardStyles.keyText}>{props.dni}</Text>
               </View>
             </View>
             <View style={userCardStyles.divider} />
@@ -62,7 +62,7 @@ const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
                 <Text style={userCardStyles.valueText}>Categoría</Text>
               </View>
               <View style={userCardStyles.value}>
-                <Text style={userCardStyles.keyText}> {user?.type} </Text>
+                <Text style={userCardStyles.keyText}>{user?.type}</Text>
               </View>
             </View>
             <View style={userCardStyles.divider} />

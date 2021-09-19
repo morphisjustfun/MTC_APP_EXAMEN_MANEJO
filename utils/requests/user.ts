@@ -11,7 +11,7 @@ export const User = {
         () =>
           resolve({
             name: 'Luis Alfonso Berrospi Rodriguez',
-            type: 'Inmortal top 1400 DOTA 2',
+            type: 'Bnmortal top 1400 DOTA 2 - AED BEST TA 2021',
           }),
         2000,
       ),
