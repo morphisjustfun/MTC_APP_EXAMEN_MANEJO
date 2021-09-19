@@ -1,5 +1,5 @@
 import {Location} from 'react-native-location';
-import {GeoDecode} from './types';
+import {GeoDecode, Address} from './types';
 
 const getFormattedTime = (target: number) => {
   return `${target >= 10 ? target.toString() : `0${target}`}`;
@@ -9,7 +9,9 @@ export const getConvertedDate = (date: Date) => {
   const seconds = date.getSeconds();
   const minutes = date.getMinutes();
   const hours = date.getHours();
-  return `${getFormattedTime(hours)}:${getFormattedTime(minutes)}:${getFormattedTime(seconds)}`;
+  return `${getFormattedTime(hours)}:${getFormattedTime(
+    minutes,
+  )}:${getFormattedTime(seconds)}`;
 };
 
 export const getLastLocation = (locations: Location[]) => {
@@ -39,4 +41,11 @@ export const geoDecode = async (
   return fetch(
     `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`,
   ).then(response => response.json());
+};
+
+export const getConvertedLocation = (location: Address | undefined) => {
+   if (location?.road && location?.city && location?.country){
+      return `${location.road}, ${location.city}, ${location.country}`
+   }
+   return ''
 };
