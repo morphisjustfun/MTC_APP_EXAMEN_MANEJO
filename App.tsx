@@ -116,7 +116,7 @@ const App = () => {
     <View style={containerStyles.generalContainer}>
       <View style={containerStyles.containerTopBar}>
         <Image
-          source={require('./assets/images/escudo.png')}
+          source={require('../assets/images/escudo.png')}
           style={topBarStyles.logo}
           resizeMode="contain"
         />

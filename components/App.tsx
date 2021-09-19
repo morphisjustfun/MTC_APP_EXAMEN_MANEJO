@@ -4,9 +4,9 @@ import {
     View
 } from 'react-native';
 import RNLocation, { Location, Subscription } from 'react-native-location';
-import { Address } from './utils/types';
-import { geoDecode, getConvertedDate, getConvertedLocation, getLastLocation } from './utils/utils';
-import {containerStyles, arrowStyles, topBarStyles, textStyles} from './styles/App';
+import { Address } from '../utils/types';
+import { geoDecode, getConvertedDate, getConvertedLocation, getLastLocation } from '../utils/utils';
+import {containerStyles, arrowStyles, topBarStyles, textStyles} from '../styles/App';
 
 const Arrow = () => {
   const [state, setState] = React.useState(new Animated.Value(0));
@@ -116,7 +116,7 @@ const App = () => {
     <View style={containerStyles.generalContainer}>
       <View style={containerStyles.containerTopBar}>
         <Image
-          source={require('./assets/images/escudo.png')}
+          source={require('../assets/images/escudo.png')}
           style={topBarStyles.logo}
           resizeMode="contain"
         />
