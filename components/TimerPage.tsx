@@ -5,7 +5,7 @@ import {TimerPageProps} from '../types/TimerPage';
 import {containerStyles, textStyles} from '../styles/TimerPage';
 import {colors} from '../utils/colors';
 import ButtonTimer from '../utils/components/ButtonTimer';
-import { getConvertedTimer } from '../utils/utils';
+import {getConvertedTimer} from '../utils/utils';
 
 const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
   // initial | running  | done
@@ -22,6 +22,13 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
     }
   }, [counterDec, state]);
 
+  const startTime = React.useRef<undefined | Date>(undefined);
+
+  const actualDate =
+    startTime.current === undefined
+      ? undefined
+      : new Date().getSeconds() - startTime.current.getSeconds();
+
   return (
     <View
       style={
@@ -30,7 +37,11 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
           : containerStyles.afterRoot
       }>
       <View style={containerStyles.timerContainer}>
-        <Text style={textStyles.timerText}>{getConvertedTimer(counterDec)}</Text>
+        <Text style={textStyles.timerText}>
+          {actualDate !== undefined
+            ? getConvertedTimer(actualDate)
+            : '00:00:00'}
+        </Text>
       </View>
       <View
         style={{
@@ -43,6 +54,7 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
           action={() => {
             if (state === 'initial') {
               setState('running');
+              startTime.current = new Date();
             }
             if (state === 'running') {
               setState('done');
