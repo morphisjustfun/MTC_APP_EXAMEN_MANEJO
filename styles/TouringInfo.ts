@@ -27,14 +27,11 @@ export const containerStyles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
-  containerSpinLoader: {
+  containerUserCard: {
     flex: 0.3,
   },
-  containerUserCard: {
-    flex: 0.27,
-  },
   containerButton: {
-    flex: 0.35,
+    flex: 0.28,
     justifyContent: 'center',
     alignItems: 'center',
   },

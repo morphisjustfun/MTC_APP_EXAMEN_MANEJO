@@ -3,8 +3,8 @@ import {TouchableOpacity, Text, View} from 'react-native';
 import {buttonTimerStyles} from '../../styles/TimerPage';
 
 interface ButtonTimerProps {
-  action: () => void,
-  title: string
+  action: () => void;
+  title: string;
 }
 
 const ButtonTimer: React.FC<ButtonTimerProps> = props => {

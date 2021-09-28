@@ -1,5 +1,7 @@
 export const pages = {
-   APP: 'com.MTC.manejo',
-   USERINFOPAGE: 'UserInfoPage',
-   TIMERPAGE: 'TimerPage'
-}
+  APP: 'com.MTC.manejo',
+  USERINFOPAGE: 'UserInfoPage',
+  TIMERPAGE: 'TimerPage',
+  LOGINTOURING: 'LoginTouringPage',
+  TOURINGINFOPAGE: 'TouringInfoPage',
+};

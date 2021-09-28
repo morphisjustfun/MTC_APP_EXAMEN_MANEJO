@@ -1,3 +1,3 @@
 export interface TimerPageProps {
-   dni: string
+  dni: string;
 }

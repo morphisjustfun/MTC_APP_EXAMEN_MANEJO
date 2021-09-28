@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { colors } from "../utils/colors";
+import {StyleSheet} from 'react-native';
+import {colors} from '../utils/colors';
 
 export const containerStyles = StyleSheet.create({
   containerTopBar: {
@@ -51,7 +51,7 @@ export const arrowStyles = StyleSheet.create({
   },
   triangleContainer: {
     flex: 1,
-    alignItems:'center',
+    alignItems: 'center',
   },
 });
 
@@ -109,5 +109,4 @@ export const textStyles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
   },
-
 });

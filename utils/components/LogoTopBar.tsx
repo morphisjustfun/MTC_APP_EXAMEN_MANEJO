@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Image, Text } from "react-native";
-import { containerStyles, topBarStyles } from "../../styles/App";
+import {View, Image, Text} from 'react-native';
+import {containerStyles, topBarStyles} from '../../styles/App';
 
 const LogoTopBar = () => {
   return (

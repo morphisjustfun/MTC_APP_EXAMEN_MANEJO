@@ -62,9 +62,8 @@ const Arrow: FC<ArrowProps> = props => {
           },
         });
       }}>
-      <Animated.View
-        style={[arrowStyles.arrowRect, arrowAnimationStyle]}></Animated.View>
-      <View style={arrowStyles.arrowTriangleDown}></View>
+      <Animated.View style={[arrowStyles.arrowRect, arrowAnimationStyle]} />
+      <View style={arrowStyles.arrowTriangleDown} />
     </TouchableOpacity>
   );
 };

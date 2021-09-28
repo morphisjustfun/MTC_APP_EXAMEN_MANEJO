@@ -1,3 +1,3 @@
 export interface UserInfoProps {
-   dni: string,
+  dni: string;
 }

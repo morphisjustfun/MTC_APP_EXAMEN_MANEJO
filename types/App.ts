@@ -1,3 +1,3 @@
 export interface ArrowProps {
-   componentId: string
+  componentId: string;
 }
