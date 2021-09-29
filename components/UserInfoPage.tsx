@@ -14,6 +14,7 @@ import {CustomButton} from '../utils/components/Button';
 import {colors} from '../utils/colors';
 import {pages} from '../constants/pages';
 import {TimerPageProps} from '../types/TimerPage';
+import BackgroundView from '../utils/components/BackgroundView';
 
 const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
   const [user, setUser] = React.useState<UserType | undefined>(undefined);
@@ -25,6 +26,7 @@ const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
   }, []);
   return (
     <View style={rootStyles.root}>
+      <BackgroundView/>
       <LogoTopBar />
       <View style={containerStyles.containerTitle}>
         <Text style={textStyles.title}>Información del postulante</Text>

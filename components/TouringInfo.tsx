@@ -11,10 +11,12 @@ import {View, Text} from 'react-native';
 import LogoTopBar from '../utils/components/LogoTopBar';
 import {CustomButton} from '../utils/components/Button';
 import {pages} from '../constants/pages';
+import BackgroundView from '../utils/components/BackgroundView';
 
 const TouringInfo: NavigationFunctionComponent<TouringInfoProps> = props => {
   return (
     <View style={rootStyles.root}>
+      <BackgroundView/>
       <LogoTopBar />
       <View style={containerStyles.containerTitle}>
         <Text style={textStyles.title}> Información del evaluador </Text>

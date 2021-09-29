@@ -19,6 +19,7 @@ import {ArrowProps} from '../types/App';
 import {pages} from '../constants/pages';
 import LogoTopBar from '../utils/components/LogoTopBar';
 import {UserInfoProps} from '../types/UserInfoPage';
+import BackgroundView from '../utils/components/BackgroundView';
 
 const Arrow: FC<ArrowProps> = props => {
   const [state] = React.useState(new Animated.Value(0));
@@ -137,6 +138,7 @@ const App: NavigationFunctionComponent = props => {
   const currentDate = new Date();
   return (
     <View style={containerStyles.generalContainer}>
+      <BackgroundView/>
       <LogoTopBar />
       <View style={containerStyles.containerTitle}>
         <Text style={textStyles.title}>

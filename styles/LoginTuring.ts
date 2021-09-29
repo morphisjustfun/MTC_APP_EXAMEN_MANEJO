@@ -38,11 +38,13 @@ export const textStyles = StyleSheet.create({
   },
   inputStyle: {
     marginHorizontal: 32,
-    borderWidth: 2,
+    borderWidth: 1,
     padding: 10,
     marginBottom: 30,
     color: colors.black,
     fontWeight: 'bold',
     fontSize: 18,
+    borderRadius: 10,
+    backgroundColor: colors.white
   },
 });
