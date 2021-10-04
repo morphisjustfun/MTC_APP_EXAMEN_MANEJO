@@ -10,16 +10,35 @@ export const rootStyles = StyleSheet.create({
 
 export const containerStyles = StyleSheet.create({
   containerTitle: {
-    flex: 0.28,
+    flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
-  containerTextFields: {
-    flex: 0.2,
+  containerText1: {
+    flex: 0.5,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+
+
+  containerText2: {
+    flex: 0.15,
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+  containerTextFields: {
+    flex: 0.5,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   containerButton: {
-    flex: 0.34,
+    flex: 0.25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 0.5,
+  },
+  containerText3: {
+    flex: 0.15,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -39,12 +58,44 @@ export const textStyles = StyleSheet.create({
   inputStyle: {
     marginHorizontal: 32,
     borderWidth: 1,
-    padding: 10,
-    marginBottom: 30,
+    padding: 11,
+    marginBottom: 10,
     color: colors.black,
+    borderColor: colors.greyText,
     fontWeight: 'bold',
-    fontSize: 18,
-    borderRadius: 10,
-    backgroundColor: colors.white
+    fontSize: 16,
+    borderRadius: 50,
+    backgroundColor: colors.white,
+    width: "90%",
+  },
+  text1:{
+    fontFamily: 'Roboto',
+    fontSize: 20,
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    lineHeight: 38,
+    letterSpacing: 0,
+    textAlign: 'center',
+    padding: 10,
+  },
+  text2:{
+    fontFamily: 'Roboto',
+    fontSize: 10,
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: 38,
+    letterSpacing: 0,
+    textAlign: 'center',
+  },
+  text3:{
+    fontFamily: 'Roboto',
+    fontSize: 10,
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: 38,
+    letterSpacing: 0,
+    textAlign: 'center',
+    color: colors.primary,
+    textDecorationLine: 'underline',
   },
 });

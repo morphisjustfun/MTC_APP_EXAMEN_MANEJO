@@ -3,7 +3,7 @@ import {colors} from '../utils/colors';
 
 export const containerStyles = StyleSheet.create({
   containerTopBar: {
-    flex: 0.08,
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: colors.primary,

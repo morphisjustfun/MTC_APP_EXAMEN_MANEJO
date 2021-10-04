@@ -74,11 +74,13 @@ export const buttonStyles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 4,
-    backgroundColor: colors.secondary,
+    borderRadius: 50,
+    backgroundColor: colors.primary,
+    width: '90%',
   },
   text: {
     color: colors.white,
     fontSize: 15,
+    fontWeight: 'bold',
   },
 });
