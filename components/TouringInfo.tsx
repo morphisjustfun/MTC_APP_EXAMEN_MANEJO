@@ -17,11 +17,7 @@ const TouringInfo: NavigationFunctionComponent<TouringInfoProps> = props => {
   return (
     <View style={rootStyles.root}>
       <BackgroundView/>
-      <View style={{
-        flex: 0.1,
-      }}>
         <LogoTopBar />
-      </View>
       <View style={{
         flex: 0.9,
       }}>

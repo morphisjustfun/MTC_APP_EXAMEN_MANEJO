@@ -20,7 +20,6 @@ export const containerStyles = StyleSheet.create({
     alignItems: 'center',
   },
 
-
   containerText2: {
     flex: 0.15,
     justifyContent: 'center',
@@ -80,7 +79,7 @@ export const textStyles = StyleSheet.create({
   },
   text2:{
     fontFamily: 'Roboto',
-    fontSize: 10,
+    fontSize: 13,
     fontStyle: 'normal',
     fontWeight: '500',
     lineHeight: 38,
