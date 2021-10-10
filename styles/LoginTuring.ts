@@ -9,18 +9,34 @@ export const rootStyles = StyleSheet.create({
 });
 
 export const containerStyles = StyleSheet.create({
+  containerNotLogo: {
+    flex: 0.9,
+    alignItems: 'center',
+  },
+  containerUpRed: {
+    flex: 0.5,
+  },
+  containerRed: {
+    flex: 1,
+    width: '88%',
+    height: '90%',
+    borderWidth: 1,
+    borderRadius: 25,
+    borderColor: colors.primary,
+    marginBottom: 60,
+  },
   containerTitle: {
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
-  containerText1: {
+  containerTextIniciarSesion: {
     flex: 0.5,
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
 
-  containerText2: {
+  containerTextIngreseInfo: {
     flex: 0.15,
     justifyContent: 'center',
     alignItems: 'center',
@@ -36,7 +52,7 @@ export const containerStyles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 0.5,
   },
-  containerText3: {
+  containerTextForgotPassword: {
     flex: 0.15,
     justifyContent: 'center',
     alignItems: 'center',
@@ -67,7 +83,7 @@ export const textStyles = StyleSheet.create({
     backgroundColor: colors.white,
     width: "90%",
   },
-  text1:{
+  textIniciarSesion:{
     fontFamily: 'Roboto',
     fontSize: 20,
     fontStyle: 'normal',
@@ -77,7 +93,7 @@ export const textStyles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
   },
-  text2:{
+  textIngreseInfo:{
     fontFamily: 'Roboto',
     fontSize: 13,
     fontStyle: 'normal',
@@ -86,7 +102,7 @@ export const textStyles = StyleSheet.create({
     letterSpacing: 0,
     textAlign: 'center',
   },
-  text3:{
+  textForgotPassword:{
     fontFamily: 'Roboto',
     fontSize: 10,
     fontStyle: 'normal',
