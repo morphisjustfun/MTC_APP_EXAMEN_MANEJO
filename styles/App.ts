@@ -27,6 +27,9 @@ export const containerStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
+  containerPhoto: {
+    flex: 1,
+  }
 });
 
 export const arrowStyles = StyleSheet.create({
@@ -74,6 +77,15 @@ export const topBarStyles = StyleSheet.create({
     color: colors.white,
     marginRight: 12,
     fontSize: 14,
+  },
+});
+
+export const imageStyles = StyleSheet.create({
+  photo: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    borderRadius: 500,
   },
 });
 

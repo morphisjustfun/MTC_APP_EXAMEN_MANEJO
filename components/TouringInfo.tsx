@@ -12,57 +12,60 @@ import LogoTopBar from '../utils/components/LogoTopBar';
 import {CustomButton} from '../utils/components/Button';
 import {pages} from '../constants/pages';
 import BackgroundView from '../utils/components/BackgroundView';
+import Photo from '../utils/components/Photo';
 
 const TouringInfo: NavigationFunctionComponent<TouringInfoProps> = props => {
   return (
     <View style={rootStyles.root}>
       <BackgroundView/>
-        <LogoTopBar />
-      <View style={{
-        flex: 0.9,
-      }}>
+      <LogoTopBar />
+      <View style={containerStyles.containerNotLogo}>
         <View style={containerStyles.containerTitle}>
-          <Text style={textStyles.title}> Información del evaluador </Text>
+          <Text style={textStyles.title}> Bienvenido al Sistema de Examen de Manejo en vía pública </Text>
         </View>
-        <View style={{flex: 0.06}} />
-        <View style={containerStyles.containerUserCard}>
-          <View style={userCardStyles.divider} />
-          <View style={userCardStyles.textBox}>
-            <View style={userCardStyles.key}>
-              <Text style={userCardStyles.valueText}>Entidad</Text>
+        <View style={containerStyles.containerPhoto}>
+          <Photo/>
+        </View>
+        <View style={containerStyles.containerRed}>
+          <View style={containerStyles.containerUserCard}>
+            <View style={userCardStyles.divider} />
+            <View style={userCardStyles.textBox}>
+              <View style={userCardStyles.key}>
+                <Text style={userCardStyles.valueText}>Entidad</Text>
+              </View>
+              <View style={userCardStyles.value}>
+                <Text style={userCardStyles.keyText}>{props.entity}</Text>
+              </View>
             </View>
-            <View style={userCardStyles.value}>
-              <Text style={userCardStyles.keyText}>{props.entity}</Text>
+            <View style={userCardStyles.divider} />
+            <View style={userCardStyles.textBox}>
+              <View style={userCardStyles.key}>
+                <Text style={userCardStyles.valueText}>Tipo de entidad</Text>
+              </View>
+              <View style={userCardStyles.value}>
+                <Text style={userCardStyles.keyText}>{props.entityType}</Text>
+              </View>
             </View>
+            <View style={userCardStyles.divider} />
+            <View style={userCardStyles.textBox}>
+              <View style={userCardStyles.key}>
+                <Text style={userCardStyles.valueText}>Usuario</Text>
+              </View>
+              <View style={userCardStyles.value}>
+                <Text style={userCardStyles.keyText}>{props.name}</Text>
+              </View>
+            </View>
+            <View style={userCardStyles.divider} />
+            <View style={userCardStyles.textBox}>
+              <View style={userCardStyles.key}>
+                <Text style={userCardStyles.valueText}>Tipo Perfil</Text>
+              </View>
+              <View style={userCardStyles.value}>
+                <Text style={userCardStyles.keyText}>{props.type}</Text>
+              </View>
+            </View>
+            <View style={userCardStyles.divider} />
           </View>
-          <View style={userCardStyles.divider} />
-          <View style={userCardStyles.textBox}>
-            <View style={userCardStyles.key}>
-              <Text style={userCardStyles.valueText}>Tipo de entidad</Text>
-            </View>
-            <View style={userCardStyles.value}>
-              <Text style={userCardStyles.keyText}>{props.entityType}</Text>
-            </View>
-          </View>
-          <View style={userCardStyles.divider} />
-          <View style={userCardStyles.textBox}>
-            <View style={userCardStyles.key}>
-              <Text style={userCardStyles.valueText}>Usuario</Text>
-            </View>
-            <View style={userCardStyles.value}>
-              <Text style={userCardStyles.keyText}>{props.name}</Text>
-            </View>
-          </View>
-          <View style={userCardStyles.divider} />
-          <View style={userCardStyles.textBox}>
-            <View style={userCardStyles.key}>
-              <Text style={userCardStyles.valueText}>Tipo Perfil</Text>
-            </View>
-            <View style={userCardStyles.value}>
-              <Text style={userCardStyles.keyText}>{props.type}</Text>
-            </View>
-          </View>
-          <View style={userCardStyles.divider} />
         </View>
         <View style={containerStyles.containerButton}>
           <CustomButton
