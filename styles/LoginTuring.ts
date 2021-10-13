@@ -78,7 +78,6 @@ export const textStyles = StyleSheet.create({
     marginBottom: 10,
     color: colors.black,
     borderColor: colors.greyText,
-    fontWeight: 'bold',
     fontSize: 16,
     borderRadius: 50,
     backgroundColor: colors.white,
