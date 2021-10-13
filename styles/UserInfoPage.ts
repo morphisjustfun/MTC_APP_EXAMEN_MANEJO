@@ -5,6 +5,9 @@ export const rootStyles = StyleSheet.create({
   root: {
     backgroundColor: colors.white,
     flex: 1,
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
   },
 });
 
@@ -23,26 +26,38 @@ export const textStyles = StyleSheet.create({
 
 export const containerStyles = StyleSheet.create({
   containerTitle: {
-    flex: 0.28,
+    flex: 0.2,
     justifyContent: 'flex-end',
     alignItems: 'center',
+    marginBottom: 50,
+  },
+  containerRed: {
+    flex: 0.6,
+    width: '88%',
+    height: '90%',
+    borderWidth: 1,
+    borderRadius: 25,
+    borderColor: colors.primary,
+    marginBottom: 20,
   },
   containerSpinLoader: {
-    flex: 0.3,
+    flex: 0.7,
   },
   containerUserCard: {
-    flex: 0.27,
+    flex: 1,
+    marginBottom: 50,
   },
   containerButton: {
-    flex: 0.35,
+    flex: 0.1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 30,
   },
 });
 
 export const userCardStyles = StyleSheet.create({
   divider: {
-    flex: 0.01,
+    //flex: 0.01,
     backgroundColor: colors.dividerCard,
   },
   textBox: {
@@ -51,12 +66,12 @@ export const userCardStyles = StyleSheet.create({
     marginHorizontal: 18,
   },
   key: {
-    flex: 0.25,
+    flex: 0.3,
     justifyContent: 'center',
     marginRight: 10,
   },
   value: {
-    flex: 0.75,
+    flex: 0.7,
     justifyContent: 'center',
   },
   valueText: {

@@ -11,35 +11,57 @@ export const rootStyles = StyleSheet.create({
 export const textStyles = StyleSheet.create({
   title: {
     fontFamily: 'Roboto',
-    fontSize: 32,
+    fontSize: 18,
     fontStyle: 'normal',
-    fontWeight: '500',
-    lineHeight: 38,
-    letterSpacing: 0,
+    fontWeight: 'bold',
+    lineHeight: 20,
+    letterSpacing: 1.5,
     textAlign: 'center',
     padding: 10,
+    color: colors.primary,
   },
 });
 
 export const containerStyles = StyleSheet.create({
-  containerTitle: {
-    flex: 0.28,
-    justifyContent: 'flex-end',
+  containerNotLogo: {
+    flex: 0.9,
     alignItems: 'center',
   },
-  containerUserCard: {
-    flex: 0.3,
-  },
-  containerButton: {
-    flex: 0.28,
+  containerTitle: {
+    flex: 0.5,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  containerPhoto:{
+    flex: 0.4,
+    width: '40%',
+    justifyContent: 'center',
+    alignContent: 'center',
+    marginBottom: 10,
+  },
+  containerRed: {
+    flex: 1,
+    width: '88%',
+    height: '90%',
+    borderWidth: 1,
+    borderRadius: 25,
+    borderColor: colors.primary,
+    marginBottom: 20,
+    padding: 10,
+  },
+  containerButton: {
+    flex: 0.20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 30,
+  },
+  containerUserCard: {
+    flex: 1,
   },
 });
 
 export const userCardStyles = StyleSheet.create({
   divider: {
-    flex: 0.01,
     backgroundColor: colors.dividerCard,
   },
   textBox: {

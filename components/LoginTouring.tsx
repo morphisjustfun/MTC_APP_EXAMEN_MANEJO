@@ -44,14 +44,8 @@ const LoginTouring: NavigationFunctionComponent = props => {
       <View style={rootStyles.root}>
         <BackgroundView />
         <LogoTopBar />
-        <View
-          style={{
-            flex: 0.9,
-          }}>
-          <View
-            style={{
-              flex: 0.5,
-            }}>
+        <View style={containerStyles.containerNotLogo}>
+          <View style={containerStyles.containerUpRed}>
             {showTitle && (
               <View style={containerStyles.containerTitle}>
                 <Text style={textStyles.title}>
@@ -59,28 +53,13 @@ const LoginTouring: NavigationFunctionComponent = props => {
                 </Text>
               </View>
             )}
-            <View style={containerStyles.containerText1}>
-              <Text style={textStyles.text1}>Iniciar sesión</Text>
+            <View style={containerStyles.containerTextIniciarSesion}>
+              <Text style={textStyles.textIniciarSesion}>Iniciar sesión</Text>
             </View>
           </View>
-          <View
-            style={{
-              flex: 1,
-              justifyContent: 'flex-start',
-              alignItems: 'center',
-              marginBottom: 60,
-            }}>
-            <View
-              style={{
-                flex: 1,
-                width: '88%',
-                height: '90%',
-                borderWidth: 1,
-                borderRadius: 25,
-                borderColor: colors.primary,
-              }}>
-              <View style={containerStyles.containerText2}>
-                <Text style={textStyles.text2}>
+          <View style={containerStyles.containerRed}>
+              <View style={containerStyles.containerTextIngreseInfo}>
+                <Text style={textStyles.textIngreseInfo}>
                   Ingrese su correo electrónico y contraseña asignada
                 </Text>
               </View>
@@ -98,6 +77,7 @@ const LoginTouring: NavigationFunctionComponent = props => {
                   onChangeText={setPassword}
                   placeholder="Contraseña"
                   placeholderTextColor={colors.greyText}
+                  secureTextEntry={true} 
                 />
               </View>
               <View style={containerStyles.containerButton}>
@@ -119,15 +99,10 @@ const LoginTouring: NavigationFunctionComponent = props => {
                   }}
                 />
               </View>
-              <View style={containerStyles.containerText3}>
-                <Text style={textStyles.text3}>Olvidé mi contraseña</Text>
+              <View style={containerStyles.containerTextForgotPassword}>
+                <Text style={textStyles.textForgotPassword}>Olvidé mi contraseña</Text>
               </View>
             </View>
-          </View>
-          {/* <View style={{ */}
-          {/*   flex: 0.2, */}
-          {/* }}> */}
-          {/* </View> */}
         </View>
       </View>
     </KeyboardAvoidingWrapper>

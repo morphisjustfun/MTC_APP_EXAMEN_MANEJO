@@ -27,11 +27,11 @@ const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
   return (
     <View style={rootStyles.root}>
       <BackgroundView/>
-      <LogoTopBar />
+      <LogoTopBar/>
+      
       <View style={containerStyles.containerTitle}>
         <Text style={textStyles.title}>Información del postulante</Text>
       </View>
-      <View style={{flex: 0.1}} />
       {/* // WARNING activity indicator size only works in android */}
       {user === undefined ? (
         <>
@@ -41,35 +41,37 @@ const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
         </>
       ) : (
         <>
-          <View style={containerStyles.containerUserCard}>
-            <View style={userCardStyles.divider} />
-            <View style={userCardStyles.textBox}>
-              <View style={userCardStyles.key}>
-                <Text style={userCardStyles.valueText}>Nombre</Text>
+          <View style={containerStyles.containerRed}> 
+            <View style={containerStyles.containerUserCard}>
+              <View style={userCardStyles.divider} />
+              <View style={userCardStyles.textBox}>
+                <View style={userCardStyles.key}>
+                  <Text style={userCardStyles.valueText}>Nombre</Text>
+                </View>
+                <View style={userCardStyles.value}>
+                  <Text style={userCardStyles.keyText}>{user?.name}</Text>
+                </View>
               </View>
-              <View style={userCardStyles.value}>
-                <Text style={userCardStyles.keyText}>{user?.name}</Text>
+              <View style={userCardStyles.divider} />
+              <View style={userCardStyles.textBox}>
+                <View style={userCardStyles.key}>
+                  <Text style={userCardStyles.valueText}>DNI</Text>
+                </View>
+                <View style={userCardStyles.value}>
+                  <Text style={userCardStyles.keyText}>{props.dni}</Text>
+                </View>
               </View>
+              <View style={userCardStyles.divider} />
+              <View style={userCardStyles.textBox}>
+                <View style={userCardStyles.key}>
+                  <Text style={userCardStyles.valueText}>Categoría</Text>
+                </View>
+                <View style={userCardStyles.value}>
+                  <Text style={userCardStyles.keyText}>{user?.type}</Text>
+                </View>
+              </View>
+              <View style={userCardStyles.divider} />
             </View>
-            <View style={userCardStyles.divider} />
-            <View style={userCardStyles.textBox}>
-              <View style={userCardStyles.key}>
-                <Text style={userCardStyles.valueText}>DNI</Text>
-              </View>
-              <View style={userCardStyles.value}>
-                <Text style={userCardStyles.keyText}>{props.dni}</Text>
-              </View>
-            </View>
-            <View style={userCardStyles.divider} />
-            <View style={userCardStyles.textBox}>
-              <View style={userCardStyles.key}>
-                <Text style={userCardStyles.valueText}>Categoría</Text>
-              </View>
-              <View style={userCardStyles.value}>
-                <Text style={userCardStyles.keyText}>{user?.type}</Text>
-              </View>
-            </View>
-            <View style={userCardStyles.divider} />
           </View>
           <View style={containerStyles.containerButton}>
             <CustomButton
