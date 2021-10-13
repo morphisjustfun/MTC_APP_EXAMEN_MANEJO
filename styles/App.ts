@@ -114,7 +114,6 @@ export const textStyles = StyleSheet.create({
     marginTop: 80,
     marginBottom: 40,
     fontSize: 24,
-    fontStyle: 'italic',
     fontWeight: 'bold',
     lineHeight: 28,
     letterSpacing: 0,

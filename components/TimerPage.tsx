@@ -6,6 +6,7 @@ import {containerStyles, textStyles} from '../styles/TimerPage';
 import {colors} from '../utils/colors';
 import ButtonTimer from '../utils/components/ButtonTimer';
 import {getConvertedTimer} from '../utils/utils';
+import BackgroundView from '../utils/components/BackgroundView';
 
 const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
   // initial | running  | done

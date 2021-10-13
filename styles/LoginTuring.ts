@@ -73,7 +73,8 @@ export const textStyles = StyleSheet.create({
   inputStyle: {
     marginHorizontal: 32,
     borderWidth: 1,
-    padding: 11,
+    paddingVertical: 11,
+    paddingHorizontal: 20,
     marginBottom: 10,
     color: colors.black,
     borderColor: colors.greyText,
