@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Image, Text} from 'react-native';
 import {containerStyles, topBarStyles} from '../../styles/App';
+import CustomText from './CustomText';
 
 const LogoTopBar = () => {
   return (
@@ -11,9 +12,9 @@ const LogoTopBar = () => {
         resizeMode="contain"
       />
       <View style={topBarStyles.divider} />
-      <Text style={topBarStyles.textAfterLogo}>
+      <CustomText style={topBarStyles.textAfterLogo} typography="Lato-Regular">
         Plataforma digital única del Estado Peruano
-      </Text>
+      </CustomText>
     </View>
   );
 };
