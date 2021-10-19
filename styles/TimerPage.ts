@@ -26,7 +26,6 @@ export const textStyles = StyleSheet.create({
   timerText: {
     fontSize: 50,
     color: colors.white,
-    fontStyle: 'italic',
   },
 });
 
