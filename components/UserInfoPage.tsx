@@ -15,6 +15,7 @@ import {colors} from '../utils/colors';
 import {pages} from '../constants/pages';
 import {TimerPageProps} from '../types/TimerPage';
 import BackgroundView from '../utils/components/BackgroundView';
+import CustomText from '../utils/components/CustomText';
 
 const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
   const [user, setUser] = React.useState<UserType | undefined>(undefined);
@@ -26,11 +27,13 @@ const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
   }, []);
   return (
     <View style={rootStyles.root}>
-      <BackgroundView/>
-      <LogoTopBar/>
-      
+      <BackgroundView />
+      <LogoTopBar />
+
       <View style={containerStyles.containerTitle}>
-        <Text style={textStyles.title}>Información del postulante</Text>
+        <CustomText style={textStyles.title} typography="Lato-Regular">
+          Información del postulante
+        </CustomText>
       </View>
       {/* // WARNING activity indicator size only works in android */}
       {user === undefined ? (
@@ -41,33 +44,57 @@ const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
         </>
       ) : (
         <>
-          <View style={containerStyles.containerRed}> 
+          <View style={containerStyles.containerRed}>
             <View style={containerStyles.containerUserCard}>
               <View style={userCardStyles.divider} />
               <View style={userCardStyles.textBox}>
                 <View style={userCardStyles.key}>
-                  <Text style={userCardStyles.valueText}>Nombre</Text>
+                  <CustomText
+                    style={userCardStyles.valueText}
+                    typography="Lato-Regular">
+                    Nombre
+                  </CustomText>
                 </View>
                 <View style={userCardStyles.value}>
-                  <Text style={userCardStyles.keyText}>{user?.name}</Text>
+                  <CustomText
+                    style={userCardStyles.keyText}
+                    typography="Lato-Regular">
+                    {user?.name}
+                  </CustomText>
                 </View>
               </View>
               <View style={userCardStyles.divider} />
               <View style={userCardStyles.textBox}>
                 <View style={userCardStyles.key}>
-                  <Text style={userCardStyles.valueText}>DNI</Text>
+                  <CustomText
+                    style={userCardStyles.valueText}
+                    typography="Lato-Regular">
+                    DNI
+                  </CustomText>
                 </View>
                 <View style={userCardStyles.value}>
-                  <Text style={userCardStyles.keyText}>{props.dni}</Text>
+                  <CustomText
+                    style={userCardStyles.keyText}
+                    typography="Lato-Regular">
+                    {props.dni}
+                  </CustomText>
                 </View>
               </View>
               <View style={userCardStyles.divider} />
               <View style={userCardStyles.textBox}>
                 <View style={userCardStyles.key}>
-                  <Text style={userCardStyles.valueText}>Categoría</Text>
+                  <CustomText
+                    style={userCardStyles.valueText}
+                    typography="Lato-Regular">
+                    Categoría
+                  </CustomText>
                 </View>
                 <View style={userCardStyles.value}>
-                  <Text style={userCardStyles.keyText}>{user?.type}</Text>
+                  <CustomText
+                    style={userCardStyles.keyText}
+                    typography="Lato-Regular">
+                    {user?.type}
+                  </CustomText>
                 </View>
               </View>
               <View style={userCardStyles.divider} />
