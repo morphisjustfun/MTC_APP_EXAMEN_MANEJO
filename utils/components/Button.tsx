@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import {buttonStyles} from '../../styles/UserInfoPage';
+import CustomText from './CustomText';
 
 interface CustomButtonProps {
   title: string;
@@ -10,7 +11,9 @@ interface CustomButtonProps {
 export const CustomButton: React.FC<CustomButtonProps> = props => {
   return (
     <TouchableOpacity style={buttonStyles.pressable} onPress={props.action}>
-      <Text style={buttonStyles.text}>{props.title}</Text>
+      <CustomText style={buttonStyles.text} typography="Lato-Regular">
+        {props.title}
+      </CustomText>
     </TouchableOpacity>
   );
 };
