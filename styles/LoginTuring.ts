@@ -30,13 +30,13 @@ export const containerStyles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
-  containerTextIniciarSesion: {
+  containerTextLogin: {
     flex: 0.5,
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
 
-  containerTextIngreseInfo: {
+  containerTextEnterInfo: {
     flex: 0.15,
     justifyContent: 'center',
     alignItems: 'center',
@@ -81,9 +81,9 @@ export const textStyles = StyleSheet.create({
     fontSize: 16,
     borderRadius: 50,
     backgroundColor: colors.white,
-    width: "90%",
+    width: '90%',
   },
-  textIniciarSesion:{
+  textLogin: {
     fontFamily: 'Roboto',
     fontSize: 20,
     fontStyle: 'normal',
@@ -93,7 +93,7 @@ export const textStyles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
   },
-  textIngreseInfo:{
+  textEnterInfo: {
     fontFamily: 'Roboto',
     fontSize: 13,
     fontStyle: 'normal',
@@ -102,7 +102,7 @@ export const textStyles = StyleSheet.create({
     letterSpacing: 0,
     textAlign: 'center',
   },
-  textForgotPassword:{
+  textForgotPassword: {
     fontFamily: 'Roboto',
     fontSize: 10,
     fontStyle: 'normal',

@@ -7,6 +7,7 @@ import {colors} from '../utils/colors';
 import ButtonTimer from '../utils/components/ButtonTimer';
 import {getConvertedTimer} from '../utils/utils';
 import BackgroundView from '../utils/components/BackgroundView';
+import CustomText from '../utils/components/CustomText';
 
 const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
   // initial | running  | done
@@ -38,11 +39,11 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
           : containerStyles.afterRoot
       }>
       <View style={containerStyles.timerContainer}>
-        <Text style={textStyles.timerText}>
+        <CustomText style={textStyles.timerText} typography="Lato-Italic">
           {actualDate !== undefined
             ? getConvertedTimer(actualDate)
             : '00:00:00'}
-        </Text>
+        </CustomText>
       </View>
       <View
         style={{

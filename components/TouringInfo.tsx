@@ -13,55 +13,90 @@ import {CustomButton} from '../utils/components/Button';
 import {pages} from '../constants/pages';
 import BackgroundView from '../utils/components/BackgroundView';
 import Photo from '../utils/components/Photo';
+import CustomText from '../utils/components/CustomText';
 
 const TouringInfo: NavigationFunctionComponent<TouringInfoProps> = props => {
   return (
     <View style={rootStyles.root}>
-      <BackgroundView/>
+      <BackgroundView />
       <LogoTopBar />
       <View style={containerStyles.containerNotLogo}>
         <View style={containerStyles.containerTitle}>
-          <Text style={textStyles.title}> Bienvenido al Sistema de Examen de Manejo en vía pública </Text>
+          <CustomText style={textStyles.title} typography="Lato-Regular">
+            Bienvenido al Sistema de Examen de Manejo en vía pública
+          </CustomText>
         </View>
         <View style={containerStyles.containerPhoto}>
-          <Photo/>
+          <Photo />
         </View>
         <View style={containerStyles.containerRed}>
           <View style={containerStyles.containerUserCard}>
             <View style={userCardStyles.divider} />
             <View style={userCardStyles.textBox}>
               <View style={userCardStyles.key}>
-                <Text style={userCardStyles.valueText}>Entidad</Text>
+                <CustomText
+                  style={userCardStyles.valueText}
+                  typography="Lato-Regular">
+                  Entidad
+                </CustomText>
               </View>
               <View style={userCardStyles.value}>
-                <Text style={userCardStyles.keyText}>{props.entity}</Text>
+                <CustomText
+                  style={userCardStyles.keyText}
+                  typography="Lato-Regular">
+                  {props.entity}
+                </CustomText>
               </View>
             </View>
             <View style={userCardStyles.divider} />
             <View style={userCardStyles.textBox}>
               <View style={userCardStyles.key}>
-                <Text style={userCardStyles.valueText}>Tipo de entidad</Text>
+                <CustomText
+                  style={userCardStyles.valueText}
+                  typography="Lato-Regular">
+                  Tipo de entidad
+                </CustomText>
               </View>
               <View style={userCardStyles.value}>
-                <Text style={userCardStyles.keyText}>{props.entityType}</Text>
+                <CustomText
+                  style={userCardStyles.keyText}
+                  typography="Lato-Regular">
+                  {props.entityType}
+                </CustomText>
               </View>
             </View>
             <View style={userCardStyles.divider} />
             <View style={userCardStyles.textBox}>
               <View style={userCardStyles.key}>
-                <Text style={userCardStyles.valueText}>Usuario</Text>
+                <CustomText
+                  style={userCardStyles.valueText}
+                  typography="Lato-Regular">
+                  Usuario
+                </CustomText>
               </View>
               <View style={userCardStyles.value}>
-                <Text style={userCardStyles.keyText}>{props.name}</Text>
+                <CustomText
+                  style={userCardStyles.keyText}
+                  typography="Lato-Regular">
+                  {props.name}
+                </CustomText>
               </View>
             </View>
             <View style={userCardStyles.divider} />
             <View style={userCardStyles.textBox}>
               <View style={userCardStyles.key}>
-                <Text style={userCardStyles.valueText}>Tipo Perfil</Text>
+                <CustomText
+                  style={userCardStyles.valueText}
+                  typography="Lato-Regular">
+                  Tipo Perfil
+                </CustomText>
               </View>
               <View style={userCardStyles.value}>
-                <Text style={userCardStyles.keyText}>{props.type}</Text>
+                <CustomText
+                  style={userCardStyles.keyText}
+                  typography="Lato-Regular">
+                  {props.type}
+                </CustomText>
               </View>
             </View>
             <View style={userCardStyles.divider} />

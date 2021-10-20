@@ -32,7 +32,7 @@ export const containerStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  containerPhoto:{
+  containerPhoto: {
     flex: 0.4,
     width: '40%',
     justifyContent: 'center',
@@ -50,7 +50,7 @@ export const containerStyles = StyleSheet.create({
     padding: 10,
   },
   containerButton: {
-    flex: 0.20,
+    flex: 0.2,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 30,

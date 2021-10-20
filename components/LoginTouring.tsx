@@ -96,19 +96,19 @@ const LoginTouring: NavigationFunctionComponent = props => {
                 </CustomText>
               </View>
             )}
-            <View style={containerStyles.containerTextIniciarSesion}>
-              <CustomText
-                style={textStyles.textIniciarSesion}
-                typography="Lato-Bold">
+            <View style={containerStyles.containerTextLogin}>
+              <CustomText style={textStyles.textLogin} typography="Lato-Bold">
                 Iniciar sesión
               </CustomText>
             </View>
           </View>
           <View style={containerStyles.containerRed}>
-            <View style={containerStyles.containerTextIngreseInfo}>
-              <Text style={textStyles.textIngreseInfo}>
+            <View style={containerStyles.containerTextEnterInfo}>
+              <CustomText
+                style={textStyles.textEnterInfo}
+                typography="Lato-Regular">
                 Ingrese su correo electrónico y contraseña asignada
-              </Text>
+              </CustomText>
             </View>
             <View style={containerStyles.containerTextFields}>
               <TextInput
@@ -147,9 +147,11 @@ const LoginTouring: NavigationFunctionComponent = props => {
               />
             </View>
             <View style={containerStyles.containerTextForgotPassword}>
-              <Text style={textStyles.textForgotPassword}>
+              <CustomText
+                style={textStyles.textForgotPassword}
+                typography="Lato-Regular">
                 Olvidé mi contraseña
-              </Text>
+              </CustomText>
             </View>
           </View>
         </View>
