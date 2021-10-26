@@ -30,6 +30,7 @@ import KeyboardAvoidingWrapper from '../utils/components/KeyboardAvoidingViewWra
 
 import {useNavigationComponentDidAppear} from 'react-native-navigation-hooks';
 import CustomText from '../utils/components/CustomText';
+import SplashScreen from 'react-native-lottie-splash-screen';
 
 const LoginTouring: NavigationFunctionComponent = props => {
   const [username, setUsername] = React.useState('');
@@ -46,6 +47,7 @@ const LoginTouring: NavigationFunctionComponent = props => {
   };
 
   useEffect(() => {
+  SplashScreen.hide();
     let unsubscribeDidShow = Keyboard.addListener(
       'keyboardDidShow',
       setShowTitleFalse,
