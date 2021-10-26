@@ -142,7 +142,7 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('mtcTest.keystore')
+            storeFile file('mtc.keystore')
             storePassword System.in.newReader().readLine()
             keyAlias System.in.newReader().readLine()
             keyPassword System.in.newReader().readLine()
