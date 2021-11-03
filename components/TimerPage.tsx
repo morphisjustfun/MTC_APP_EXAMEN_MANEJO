@@ -8,6 +8,7 @@ import ButtonTimer from '../utils/components/ButtonTimer';
 import {getConvertedTimer} from '../utils/utils';
 import BackgroundView from '../utils/components/BackgroundView';
 import CustomText from '../utils/components/CustomText';
+import { ExternalSensor } from '../utils/requests/externalSensors';
 
 const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
   // initial | running  | done
@@ -53,10 +54,30 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
       />
       <View style={containerStyles.buttonContainer}>
         <ButtonTimer
-          action={() => {
+          action={ async () => {
             if (state === 'initial') {
               setState('running');
               startTime.current = new Date();
+
+              const response = await ExternalSensor.publish(
+              {
+                   "codigoEquipo": 2123,
+                   "token": "a2131bC23123",
+                   "action": "grabar",
+                   "fechaHora": "2018-12-10T13:45:00.000Z",
+                   "correlativo": "no se que viene",
+                   "entidad": {
+                     "codigo": 2132,
+                     "nombre": "Turin"
+                   },
+                   "postulante":{
+                       "tipoDoc": 3,
+                       "nroDoc": "07899681"
+                   } 
+              }
+              );
+
+              console.log(response);
             }
             if (state === 'running') {
               setState('done');

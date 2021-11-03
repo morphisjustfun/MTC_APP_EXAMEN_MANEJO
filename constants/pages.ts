@@ -5,3 +5,7 @@ export const pages = {
   LOGINTOURING: 'LoginTouringPage',
   TOURINGINFOPAGE: 'TouringInfoPage',
 };
+
+export const urls = {
+   SENSOR_URL: 'http://titaniusrl.com:5010/api'
+}
