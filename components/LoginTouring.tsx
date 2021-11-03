@@ -28,13 +28,13 @@ import Background from '../assets/images/background';
 import BackgroundView from '../utils/components/BackgroundView';
 import KeyboardAvoidingWrapper from '../utils/components/KeyboardAvoidingViewWrapper';
 
-import {useNavigationComponentDidAppear} from 'react-native-navigation-hooks';
 import CustomText from '../utils/components/CustomText';
 import SplashScreen from 'react-native-lottie-splash-screen';
 
 const LoginTouring: NavigationFunctionComponent = props => {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
 
   const [showTitle, setShowTitle] = React.useState(true);
 
@@ -131,12 +131,15 @@ const LoginTouring: NavigationFunctionComponent = props => {
             </View>
             <View style={containerStyles.containerButton}>
               <CustomButton
+                loading={loading}
                 title="INGRESAR"
                 action={async () => {
+                setLoading(true);
                   const supervisor = await Supervisor.getSupervisor(
                     username,
                     password,
                   );
+                setLoading(false);
                   Navigation.push<TouringInfoProps>(props.componentId, {
                     component: {
                       name: pages.TOURINGINFOPAGE,

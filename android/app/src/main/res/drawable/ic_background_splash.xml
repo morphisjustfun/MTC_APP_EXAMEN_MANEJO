@@ -2,8 +2,10 @@
     xmlns:aapt="http://schemas.android.com/aapt"
     android:width="1472.85dp"
     android:height="2455.85dp"
-    android:viewportWidth="1472.85"
-    android:viewportHeight="2455.85">
+    android:viewportWidth="1080"
+    android:viewportHeight="1923">
+    <!-- android:viewportWidth="1472.85" -->
+    <!-- android:viewportHeight="2455.85"> -->
   <path
       android:pathData="M198.06,294.14h1080v1923h-1080z"
       android:fillColor="#f01e41"/>

@@ -39,7 +39,7 @@ const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
       {user === undefined ? (
         <>
           <View style={containerStyles.containerSpinLoader}>
-            <ActivityIndicator size={56} color={colors.secondary} />
+            <ActivityIndicator size={56} color={colors.red} />
           </View>
         </>
       ) : (
