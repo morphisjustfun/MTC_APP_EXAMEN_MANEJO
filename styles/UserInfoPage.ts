@@ -32,7 +32,7 @@ export const containerStyles = StyleSheet.create({
     marginBottom: 50,
   },
   containerRed: {
-    flex: 0.6,
+    flex: 0.45,
     width: '88%',
     height: '90%',
     borderWidth: 1,
@@ -45,7 +45,6 @@ export const containerStyles = StyleSheet.create({
   },
   containerUserCard: {
     flex: 1,
-    marginBottom: 50,
   },
   containerButton: {
     flex: 0.1,
@@ -57,21 +56,21 @@ export const containerStyles = StyleSheet.create({
 
 export const userCardStyles = StyleSheet.create({
   divider: {
-    //flex: 0.01,
+    flex: 0.006,
     backgroundColor: colors.dividerCard,
   },
   textBox: {
-    flex: 0.32,
+    flex: 0.3,
     flexDirection: 'row',
-    marginHorizontal: 18,
+    marginHorizontal: 20,
   },
   key: {
-    flex: 0.3,
+    flex: 0.4,
     justifyContent: 'center',
     marginRight: 10,
   },
   value: {
-    flex: 0.7,
+    flex: 0.75,
     justifyContent: 'center',
   },
   valueText: {

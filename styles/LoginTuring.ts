@@ -61,7 +61,6 @@ export const containerStyles = StyleSheet.create({
 
 export const textStyles = StyleSheet.create({
   title: {
-    fontFamily: 'Roboto',
     fontSize: 32,
     fontStyle: 'normal',
     fontWeight: '500',

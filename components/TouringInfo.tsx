@@ -31,13 +31,13 @@ const TouringInfo: NavigationFunctionComponent<TouringInfoProps> = props => {
         </View>
         <View style={containerStyles.containerRed}>
           <View style={containerStyles.containerUserCard}>
-            <View style={userCardStyles.divider} />
+            {/* <View style={userCardStyles.divider} /> */}
             <View style={userCardStyles.textBox}>
               <View style={userCardStyles.key}>
                 <CustomText
                   style={userCardStyles.valueText}
                   typography="Lato-Regular">
-                  Entidad
+                  Entidad:
                 </CustomText>
               </View>
               <View style={userCardStyles.value}>
@@ -54,7 +54,7 @@ const TouringInfo: NavigationFunctionComponent<TouringInfoProps> = props => {
                 <CustomText
                   style={userCardStyles.valueText}
                   typography="Lato-Regular">
-                  Tipo de entidad
+                  Tipo entidad:
                 </CustomText>
               </View>
               <View style={userCardStyles.value}>
@@ -71,7 +71,7 @@ const TouringInfo: NavigationFunctionComponent<TouringInfoProps> = props => {
                 <CustomText
                   style={userCardStyles.valueText}
                   typography="Lato-Regular">
-                  Usuario
+                  Usuario:
                 </CustomText>
               </View>
               <View style={userCardStyles.value}>
@@ -88,7 +88,7 @@ const TouringInfo: NavigationFunctionComponent<TouringInfoProps> = props => {
                 <CustomText
                   style={userCardStyles.valueText}
                   typography="Lato-Regular">
-                  Tipo Perfil
+                  Tipo perfil:
                 </CustomText>
               </View>
               <View style={userCardStyles.value}>
@@ -99,7 +99,7 @@ const TouringInfo: NavigationFunctionComponent<TouringInfoProps> = props => {
                 </CustomText>
               </View>
             </View>
-            <View style={userCardStyles.divider} />
+            {/* <View style={userCardStyles.divider} /> */}
           </View>
         </View>
         <View style={containerStyles.containerButton}>

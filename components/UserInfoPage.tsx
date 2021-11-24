@@ -46,13 +46,13 @@ const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
         <>
           <View style={containerStyles.containerRed}>
             <View style={containerStyles.containerUserCard}>
-              <View style={userCardStyles.divider} />
+              {/* <View style={userCardStyles.divider} /> */}
               <View style={userCardStyles.textBox}>
                 <View style={userCardStyles.key}>
                   <CustomText
                     style={userCardStyles.valueText}
                     typography="Lato-Regular">
-                    Nombre
+                    Nombre:
                   </CustomText>
                 </View>
                 <View style={userCardStyles.value}>
@@ -69,7 +69,25 @@ const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
                   <CustomText
                     style={userCardStyles.valueText}
                     typography="Lato-Regular">
-                    DNI
+                    Tipo documento:
+                  </CustomText>
+                </View>
+                <View style={userCardStyles.value}>
+                  <CustomText
+                    style={userCardStyles.keyText}
+                    typography="Lato-Regular">
+                    {user.docType}
+                  </CustomText>
+                </View>
+              </View>
+              <View style={userCardStyles.divider} />
+              <View style={userCardStyles.textBox}>
+                <View style={userCardStyles.key}>
+                  <CustomText
+                    style={userCardStyles.valueText}
+                    typography="Lato-Regular"
+                    numberOfLines={3}>
+                    Número documento:
                   </CustomText>
                 </View>
                 <View style={userCardStyles.value}>
@@ -86,7 +104,7 @@ const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
                   <CustomText
                     style={userCardStyles.valueText}
                     typography="Lato-Regular">
-                    Categoría
+                    Categoría:
                   </CustomText>
                 </View>
                 <View style={userCardStyles.value}>
@@ -97,7 +115,7 @@ const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
                   </CustomText>
                 </View>
               </View>
-              <View style={userCardStyles.divider} />
+              {/* <View style={userCardStyles.divider} /> */}
             </View>
           </View>
           <View style={containerStyles.containerButton}>
