@@ -7,13 +7,12 @@ import {
 } from 'react-native';
 import {FunctionComponent} from 'react';
 
-
 const KeyboardAvoidingWrapper: FunctionComponent = props => {
   return (
     <KeyboardAvoidingView style={{flex: 1}}>
       <ScrollView
         style={{backgroundColor: 'transparent'}}
-        contentContainerStyle={{flexGrow:1}}>
+        contentContainerStyle={{flexGrow: 1}}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           {props.children}
         </TouchableWithoutFeedback>

@@ -138,7 +138,7 @@ const App: NavigationFunctionComponent = props => {
   const currentDate = new Date();
   return (
     <View style={containerStyles.generalContainer}>
-      <BackgroundView/>
+      <BackgroundView />
       <LogoTopBar />
       <View style={containerStyles.containerTitle}>
         <Text style={textStyles.title}>

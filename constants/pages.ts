@@ -7,5 +7,5 @@ export const pages = {
 };
 
 export const urls = {
-   SENSOR_URL: 'http://titaniusrl.com:5010/api'
-}
+  SENSOR_URL: 'http://titaniusrl.com:5010/api',
+};

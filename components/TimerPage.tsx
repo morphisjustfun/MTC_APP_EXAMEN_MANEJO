@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavigationFunctionComponent} from 'react-native-navigation';
-import {View, Text} from 'react-native';
+import {View, Text, Button} from 'react-native';
 import {TimerPageProps} from '../types/TimerPage';
 import {containerStyles, textStyles} from '../styles/TimerPage';
 import {colors} from '../utils/colors';
@@ -9,6 +9,26 @@ import {getConvertedTimer} from '../utils/utils';
 import BackgroundView from '../utils/components/BackgroundView';
 import CustomText from '../utils/components/CustomText';
 import {ExternalSensor} from '../utils/requests/externalSensors';
+import {CustomButton} from '../utils/components/Button';
+
+const getFormattedDate = () => {
+  const originalDate = new Date();
+
+  const formattedDate =
+    originalDate.getFullYear() +
+    '-' +
+    (originalDate.getMonth() + 1) +
+    '-' +
+    originalDate.getDate() +
+    '-' +
+    originalDate.getHours() +
+    '-' +
+    originalDate.getMinutes() +
+    '-' +
+    originalDate.getSeconds();
+
+  return formattedDate;
+};
 
 const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
   // initial | running  | done
@@ -40,12 +60,24 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
           : containerStyles.afterRoot
       }>
       <View style={containerStyles.timerContainer}>
+        <CustomButton
+          title="INDICADORES"
+          action={() => {
+            console.log('asdas');
+          }}
+          styles={{
+            backgroundColor: 'transparent',
+            flex: 1,
+          }}
+        />
+
         <CustomText style={textStyles.timerText} typography="Lato-Italic">
           {actualDate !== undefined
             ? getConvertedTimer(actualDate)
             : '00:00:00'}
         </CustomText>
       </View>
+
       <View
         style={{
           backgroundColor: state === 'initial' ? colors.red : colors.secondary,
@@ -65,7 +97,7 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
                 codigoEquipo: 2123,
                 token: randomString,
                 action: 'grabar',
-                fechaHora: new Date().toString(),
+                fechaHora: getFormattedDate().toString(),
                 correlativo: 'no se que viene',
                 entidad: {
                   codigo: 2132,
@@ -76,7 +108,6 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
                   nroDoc: '07899681',
                 },
               });
-
             }
             if (state === 'running') {
               setState('done');

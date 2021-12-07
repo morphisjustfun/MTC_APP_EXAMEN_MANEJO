@@ -56,7 +56,7 @@ export const containerStyles = StyleSheet.create({
 export const userCardStyles = StyleSheet.create({
   divider: {
     backgroundColor: colors.dividerCard,
-    flex: 0.006
+    flex: 0.006,
   },
   textBox: {
     flex: 0.3,

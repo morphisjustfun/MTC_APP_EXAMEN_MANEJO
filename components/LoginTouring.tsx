@@ -47,7 +47,7 @@ const LoginTouring: NavigationFunctionComponent = props => {
   };
 
   useEffect(() => {
-  SplashScreen.hide();
+    SplashScreen.hide();
     let unsubscribeDidShow = Keyboard.addListener(
       'keyboardDidShow',
       setShowTitleFalse,
@@ -134,12 +134,12 @@ const LoginTouring: NavigationFunctionComponent = props => {
                 loading={loading}
                 title="INGRESAR"
                 action={async () => {
-                setLoading(true);
+                  setLoading(true);
                   const supervisor = await Supervisor.getSupervisor(
                     username,
                     password,
                   );
-                setLoading(false);
+                  setLoading(false);
                   Navigation.push<TouringInfoProps>(props.componentId, {
                     component: {
                       name: pages.TOURINGINFOPAGE,

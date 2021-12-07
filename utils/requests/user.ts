@@ -13,7 +13,7 @@ export const User = {
           resolve({
             name: 'Luis Alfonso Berrospi Rodriguez',
             type: 'A1',
-            docType: 'DNI'
+            docType: 'DNI',
           }),
         2000,
       ),

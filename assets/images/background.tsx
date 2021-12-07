@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from 'react';
 import Svg, {
   SvgProps,
   Defs,
@@ -8,26 +8,25 @@ import Svg, {
   G,
   Circle,
   LinearGradientProps,
-} from "react-native-svg"
+} from 'react-native-svg';
 /* SVGR has dropped some elements not supported by react-native-svg: style */
 
-function CustomLinearGradient(props: LinearGradientProps){
-   return(
-        <LinearGradient
-          id="prefix__linear-gradient"
-          x1={521.87}
-          y1={929.89}
-          x2={521.87}
-          y2={70.42}
-          gradientTransform="rotate(40 679.744 572.335)"
-          gradientUnits="userSpaceOnUse"
-          {...props}
-        >
-          <Stop offset={0} stopColor="#fff" />
-          <Stop offset={0.35} stopColor="#fefefe" />
-          <Stop offset={1} stopColor="#dddddc" />
-        </LinearGradient>
-         )
+function CustomLinearGradient(props: LinearGradientProps) {
+  return (
+    <LinearGradient
+      id="prefix__linear-gradient"
+      x1={521.87}
+      y1={929.89}
+      x2={521.87}
+      y2={70.42}
+      gradientTransform="rotate(40 679.744 572.335)"
+      gradientUnits="userSpaceOnUse"
+      {...props}>
+      <Stop offset={0} stopColor="#fff" />
+      <Stop offset={0.35} stopColor="#fefefe" />
+      <Stop offset={1} stopColor="#dddddc" />
+    </LinearGradient>
+  );
 }
 
 function SvgComponent(props: SvgProps) {
@@ -37,10 +36,9 @@ function SvgComponent(props: SvgProps) {
       data-name="Layer 1"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 1445.8 2146.93"
-      {...props}
-    >
+      {...props}>
       <Defs>
-        <CustomLinearGradient/>
+        <CustomLinearGradient />
         <CustomLinearGradient
           id="prefix__linear-gradient-2"
           x1={1004.94}
@@ -169,7 +167,7 @@ function SvgComponent(props: SvgProps) {
         <Circle fill="#f4f4f4" cx={350.06} cy={2133.43} r={13.5} />
       </G>
     </Svg>
-  )
+  );
 }
 
-export default SvgComponent
+export default SvgComponent;

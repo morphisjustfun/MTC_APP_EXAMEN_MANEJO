@@ -3,7 +3,7 @@ import {colors} from '../utils/colors';
 
 export const containerStyles = StyleSheet.create({
   containerTopBar: {
-    flex:0.1,
+    flex: 0.1,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: colors.primary,
@@ -29,7 +29,7 @@ export const containerStyles = StyleSheet.create({
   },
   containerPhoto: {
     flex: 1,
-  }
+  },
 });
 
 export const arrowStyles = StyleSheet.create({
