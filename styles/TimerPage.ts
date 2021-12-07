@@ -2,12 +2,18 @@ import {StyleSheet} from 'react-native';
 import {colors} from '../utils/colors';
 
 export const containerStyles = StyleSheet.create({
+  containerTopBar: {
+    flex: 0.1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.black,
+  },
   initialRoot: {
     backgroundColor: colors.red,
     flex: 1,
   },
   afterRoot: {
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.terciary,
     flex: 1,
   },
   timerContainer: {
