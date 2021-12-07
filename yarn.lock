@@ -5465,6 +5465,11 @@
   "resolved" "https://registry.npmjs.org/react-native-lottie-splash-screen/-/react-native-lottie-splash-screen-0.1.14.tgz"
   "version" "0.1.14"
 
+"react-native-multi-select-picker@^1.0.11":
+  "integrity" "sha512-uqt1pTYx/FQv2O/mk5qYpbLp9AomGr5E0tRIX8Stz/myncITdGMUWMu8pSamlOQPRZdI8z3dq3xpiFIWvksYjg=="
+  "resolved" "https://registry.npmjs.org/react-native-multi-select-picker/-/react-native-multi-select-picker-1.0.11.tgz"
+  "version" "1.0.11"
+
 "react-native-navigation@^7.21.0":
   "integrity" "sha512-z7TjD8l+fa3Pk7S55rGnifTSM4VUDhCsBa61kP7dqmkiRf9oTEBVWe8E9IUGTc9PFD7Y6a6Me9r+TdlXNsnuvQ=="
   "resolved" "https://registry.npmjs.org/react-native-navigation/-/react-native-navigation-7.21.0.tgz"
@@ -5491,7 +5496,7 @@
     "css-select" "^2.1.0"
     "css-tree" "^1.0.0-alpha.39"
 
-"react-native@*", "react-native@>= 0.46", "react-native@>=0.4.4", "react-native@>=0.50.0", "react-native@>=0.57.0", "react-native@>=0.65.0-rc.0 || 0.0.0-*", "react-native@0.65.1":
+"react-native@*", "react-native@>= 0.46", "react-native@>=0.4.4", "react-native@>=0.50.0", "react-native@>=0.57.0", "react-native@>=0.65.0-rc.0 || 0.0.0-*", "react-native@0.60.4", "react-native@0.65.1":
   "integrity" "sha512-0UOVSnlssweQZjuaUtzViCifE/4tXm8oRbxwakopc8GavPu9vLulde145GOw6QVYiOy4iL50f+2XXRdX9NmMeQ=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.65.1.tgz"
   "version" "0.65.1"
@@ -5557,7 +5562,7 @@
   dependencies:
     "tween-functions" "^1.0.1"
 
-"react@*", "react@^16.0.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@17.0.2":
+"react@*", "react@^16.0.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@16.8.6", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
