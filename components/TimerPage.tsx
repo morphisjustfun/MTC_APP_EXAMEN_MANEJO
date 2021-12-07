@@ -30,7 +30,7 @@ const getFormattedDate = () => {
   return formattedDate;
 };
 
-const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
+const TimerPage: NavigationFunctionComponent<TimerPageProps> = _props => {
   // initial | running  | done
   const [counterDec, setCounterDec] = React.useState(0);
   const [state, setState] = React.useState<'initial' | 'running' | 'done'>(
@@ -50,7 +50,9 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
   const actualDate =
     startTime.current === undefined
       ? undefined
-      : new Date().getSeconds() - startTime.current.getSeconds();
+      : Math.ceil(
+          Math.abs(new Date().getTime() - startTime.current.getTime()) / 1000,
+        );
 
   return (
     <View
@@ -93,39 +95,48 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = props => {
               setState('running');
               startTime.current = new Date();
 
-              await ExternalSensor.publish({
-                codigoEquipo: 2123,
-                token: randomString,
-                action: 'grabar',
-                fechaHora: getFormattedDate().toString(),
-                correlativo: 'no se que viene',
-                entidad: {
-                  codigo: 2132,
-                  nombre: 'Turin',
-                },
-                postulante: {
-                  tipoDoc: 3,
-                  nroDoc: '07899681',
-                },
-              });
+              try {
+                await ExternalSensor.publish({
+                  codigoEquipo: 2123,
+                  token: randomString,
+                  action: 'grabar',
+                  fechaHora: getFormattedDate().toString(),
+                  correlativo: 'no se que viene',
+                  entidad: {
+                    codigo: 2132,
+                    nombre: 'Turin',
+                  },
+                  postulante: {
+                    tipoDoc: 3,
+                    nroDoc: '07899681',
+                  },
+                });
+              } catch (e) {
+                console.log(e);
+              }
             }
             if (state === 'running') {
               setState('done');
-              await ExternalSensor.publish({
-                codigoEquipo: 2123,
-                token: randomString,
-                action: 'detener',
-                fechaHora: new Date().toString(),
-                correlativo: 'no se que viene',
-                entidad: {
-                  codigo: 2132,
-                  nombre: 'Turin',
-                },
-                postulante: {
-                  tipoDoc: 3,
-                  nroDoc: '07899681',
-                },
-              });
+
+              try {
+                await ExternalSensor.publish({
+                  codigoEquipo: 2123,
+                  token: randomString,
+                  action: 'detener',
+                  fechaHora: new Date().toString(),
+                  correlativo: 'no se que viene',
+                  entidad: {
+                    codigo: 2132,
+                    nombre: 'Turin',
+                  },
+                  postulante: {
+                    tipoDoc: 3,
+                    nroDoc: '07899681',
+                  },
+                });
+              } catch (e) {
+                console.log(e);
+              }
             }
           }}
           title={state === 'initial' ? 'COMENZAR' : 'DETENER'}
