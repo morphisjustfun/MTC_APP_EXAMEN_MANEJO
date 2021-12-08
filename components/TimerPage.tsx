@@ -12,8 +12,8 @@ import {CustomButton} from '../utils/components/Button';
 import LogoTopBar from '../utils/components/LogoTopBar';
 import {topBarStyles} from '../styles/App';
 import {buttonStyles} from '../styles/UserInfoPage';
-import {MultipleSelectPicker} from 'react-native-multi-select-picker';
 import {StyleSheet, ScrollView} from 'react-native';
+import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 
 const getFormattedDate = () => {
   const originalDate = new Date();
@@ -42,7 +42,6 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = _props => {
   );
 
   const [selectedItems, setSelectedItems] = React.useState<string[]>([]);
-  const [isShownPicker, setIsShownPicker] = React.useState(false);
 
   React.useEffect(() => {
     if (state === 'running') {
@@ -173,7 +172,6 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = _props => {
                   : '00:00:00'}
               </CustomText>
             </View>
-
             <View
               style={{
                 backgroundColor:
@@ -267,7 +265,7 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = _props => {
     );
   } else {
     return (
-      <ScrollView style={{backgroundColor: colors.terciary}}>
+      <ScrollView style={{backgroundColor: colors.white}}>
         <View
           style={
             state === 'initial'
@@ -277,7 +275,7 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = _props => {
           <View style={containerStyles.containerTopBar}>
             {actualDate !== undefined ? (
               <>
-                <TouchableOpacity style={{flex: 1}} onPress={callbackStop}>
+                <TouchableOpacity style={{flex: 0.33}} onPress={callbackStop}>
                   <CustomText
                     style={{
                       ...topBarStyles.textAfterLogo,
@@ -288,16 +286,43 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = _props => {
                       color: colors.white,
                     }}
                     typography="Lato-Regular">
-                    Cancelar
+                    Deshacer
                   </CustomText>
                 </TouchableOpacity>
-                <View style={topBarStyles.divider} />
+                <View
+                  style={{
+                    ...topBarStyles.divider,
+                    marginLeft: 0,
+                    marginRight: 0,
+                  }}
+                />
+                <TouchableOpacity style={{flex: 0.33}} onPress={callbackStop}>
+                  <CustomText
+                    style={{
+                      ...topBarStyles.textAfterLogo,
+                      flex: undefined,
+                      fontSize: 20,
+                      textAlign: 'center',
+                      marginRight: 0,
+                      color: colors.white,
+                    }}
+                    typography="Lato-Regular">
+                    Finalizar
+                  </CustomText>
+                </TouchableOpacity>
+                <View
+                  style={{
+                    ...topBarStyles.divider,
+                    marginLeft: 0,
+                    marginRight: 0,
+                  }}
+                />
                 <CustomText
                   style={{
                     ...topBarStyles.textAfterLogo,
                     fontSize: 20,
                     textAlign: 'center',
-                    flex: 1,
+                    flex: 0.33,
                     marginRight: 0,
                   }}
                   typography="Lato-Regular">
@@ -346,128 +371,87 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = _props => {
             </>
           ) : (
             <>
-              <TouchableOpacity
-                onPress={() => {
-                  setIsShownPicker(!isShownPicker);
-                }}
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  marginTop: 40,
-                }}>
-                <CustomText
-                  typography="Lato-Regular"
-                  style={{
-                    textAlign: 'center',
-                    fontSize: 30,
-                    color: colors.white,
-                    marginBottom: 40,
-                  }}>
-                  {!isShownPicker ? 'ABRIR FORMULARIO' : 'CERRAR FORMULARIO'}
-                </CustomText>
-              </TouchableOpacity>
-
-              {isShownPicker ? (
-                <MultipleSelectPicker
-                  items={[
-                    {
-                      label:
-                        'Alinear los espejos retrovisores laterales exteriores y el espejo retrovisor central interior, según corresponda a la categoría vehicular; y de manera correcta.',
-                      value: '1',
-                    },
-                    {
-                      label:
-                        'Verificar el correcto funcionamiento del sistema de luces (luces direccionales, luces intermitentes de emergencia, luces delanteras) y de la bocina.',
-                      value: '2',
-                    },
-                    {label: 'Abrocharse el cinturón de seguridad.', value: '3'},
-                    {
-                      label:
-                        'Colocar correctamente, el asiento (ángulo de inclinación de 90º a 105º), y el cabezal de seguridad (reposacabezas) del conductor.',
-                      value: '4',
-                    },
-                    {
-                      label:
-                        'Seguir las indicaciones del evaluador, en todo momento.',
-                      value: '5',
-                    },
-                    {
-                      label:
-                        'Liberar el freno de mano del vehículo antes de iniciar la partida.',
-                      value: '6',
-                    },
-                    {
-                      label:
-                        'Demostrar dominio del uso de los mandos del vehículo (frenos, acelerador, embrague, caja de cambios)',
-                      value: '7',
-                    },
-                    {label: 'No detenerse innecesariamente.', value: '8'},
-                    {
-                      label:
-                        'Conducir con ambas manos sobre el volante de dirección, salvo por la necesidad de accionar un comando del vehículo.',
-                      value: '9',
-                    },
-                    {
-                      label: 'Desplazarse dentro del carril correspondiente. ',
-                      value: '10',
-                    },
-                    {
-                      label:
-                        'Respetar las señales de velocidad máxima y mínima instaladas en la infraestructura cerrada a la circulación vial.',
-                      value: '11',
-                    },
-                    {
-                      label:
-                        'Respetar los semáforos, las señales horizontales y verticales, y detenerse ante los cruceros peatonales, según corresponda.',
-                      value: '12',
-                    },
-                    {
-                      label:
-                        'Respetar la señalización preventiva de cruce de ciclovía.',
-                      value: '13',
-                    },
-                    {label: 'No perder el control del vehículo.', value: '14'},
-                    {
-                      label:
-                        'No realizar maniobras temerarias, generando riesgo o un accidente de tránsito.',
-                      value: '15',
-                    },
-                    {label: 'No frenar bruscamente.', value: '16'},
-                    {
-                      label: 'No tocar el claxon innecesariamente.',
-                      value: '17',
-                    },
-                  ]}
-                  onSelectionsChange={ele => {
-                    setSelectedItems(ele);
-                  }}
-                  selectedItems={selectedItems}
-                  buttonStyle={{
-                    height: 100,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                  buttonText="hello"
-                  checkboxStyle={{height: 20, width: 20}}
-                />
-              ) : null}
-
-              {(selectedItems || []).map((item: any, index) => {
-                return (
-                  <CustomText
-                    typography="Lato-Regular"
-                    key={index}
-                    style={{
-                      fontSize: 20,
-                      color: colors.white,
-                      textAlign: 'center',
-                      marginTop: 30,
-                      marginBottom: index === selectedItems.length ? 0 : 30,
-                    }}>
-                    {item.label}
-                  </CustomText>
-                );
-              })}
+              <View style={{flex: 1, marginTop: 20}}>
+                <ProgressSteps
+                  labelColor={colors.greyText}
+                  completedLabelColor={colors.greyText}
+                  disabledStepIconColor={colors.greyText}
+                  progressBarColor={colors.greyText}>
+                  <ProgressStep
+                    label="Antes"
+                    previousBtnTextStyle={{color: colors.black}}
+                    nextBtnTextStyle={{color: colors.black}}
+                    nextBtnText="Siguiente"
+                    previousBtnText="Atras">
+                    {/* Text with a checbox at its right */}
+                    <View style={{alignItems: 'center'}}>
+                    {/* CheckBox y al costado el texto */}
+                      <Text>Elemento 1</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                      <Text>Elemento 2</Text>
+                    </View>
+                  </ProgressStep>
+                  <ProgressStep
+                    label="Durante"
+                    previousBtnTextStyle={{color: colors.black}}
+                    nextBtnTextStyle={{color: colors.black}}
+                    nextBtnText="Siguiente"
+                    previousBtnText="Atras">
+                    <View style={{alignItems: 'center'}}>
+                      <Text>This is the content within step 2!</Text>
+                    </View>
+                  </ProgressStep>
+                  <ProgressStep
+                    label="Después"
+                    previousBtnTextStyle={{color: colors.black}}
+                    nextBtnTextStyle={{color: colors.black}}
+                    nextBtnText="Siguiente"
+                    previousBtnText="Atras">
+                    <View style={{alignItems: 'center'}}>
+                      <Text>This is the content within step 3!</Text>
+                    </View>
+                  </ProgressStep>
+                </ProgressSteps>
+              </View>
             </>
           )}
         </View>

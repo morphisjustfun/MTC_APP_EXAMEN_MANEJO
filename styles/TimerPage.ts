@@ -13,7 +13,7 @@ export const containerStyles = StyleSheet.create({
     flex: 1,
   },
   afterRoot: {
-    backgroundColor: colors.terciary,
+    backgroundColor: colors.white,
     flex: 1,
   },
   timerContainer: {
