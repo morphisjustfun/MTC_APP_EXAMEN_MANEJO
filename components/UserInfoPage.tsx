@@ -25,6 +25,7 @@ const UserInfoPage: NavigationFunctionComponent<UserInfoProps> = props => {
       setUser(response);
     })();
   }, []);
+
   return (
     <View style={rootStyles.root}>
       <BackgroundView />

@@ -1,19 +1,27 @@
 import React from 'react';
-import {NavigationFunctionComponent} from 'react-native-navigation';
 import {View, Text, Button, Image, TouchableOpacity} from 'react-native';
+import {StyleSheet, ScrollView} from 'react-native';
+
+import {NavigationFunctionComponent} from 'react-native-navigation';
+import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
+
 import {TimerPageProps} from '../types/TimerPage';
 import {containerStyles, textStyles} from '../styles/TimerPage';
+
 import {colors} from '../utils/colors';
-import ButtonTimer from '../utils/components/ButtonTimer';
 import {getConvertedTimer} from '../utils/utils';
+
 import CustomText from '../utils/components/CustomText';
-import {ExternalSensor} from '../utils/requests/externalSensors';
+import ButtonTimer from '../utils/components/ButtonTimer';
 import {CustomButton} from '../utils/components/Button';
 import LogoTopBar from '../utils/components/LogoTopBar';
+
+import {ExternalSensor} from '../utils/requests/externalSensors';
+import {CheckList, CheckListType} from '../utils/requests/checklist';
+
 import {topBarStyles} from '../styles/App';
 import {buttonStyles} from '../styles/UserInfoPage';
-import {StyleSheet, ScrollView} from 'react-native';
-import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 
 const getFormattedDate = () => {
   const originalDate = new Date();
@@ -40,6 +48,62 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = _props => {
   const [state, setState] = React.useState<'initial' | 'running' | 'done'>(
     'initial',
   );
+  const [checkList, setCheckList] = React.useState<CheckListType | undefined>(
+    undefined,
+  );
+  React.useEffect(() => {
+    (async () => {
+      const response = await CheckList.getCheckList();
+      setCheckList(response);
+    })();
+  }, []);
+
+  const [checkListDone, setCheckListDone] = React.useState<CheckListType>({
+    Antes: {
+      Verificacion: [],
+      Inicio: [],
+      Desplazamiento: [],
+      Cambio: [],
+      Giros: [],
+    },
+    Durante: {
+      Inicio: [],
+      Desplazamiento: [],
+      Cambio: [],
+      Giros: [],
+    },
+    Despues: {
+      Verificacion: [],
+      Inicio: [],
+      Desplazamiento: [],
+      Cambio: [],
+      Giros: [],
+    },
+  });
+
+  const verifyCheckListDone = (key1, key2, item) => {
+    return checkListDone[key1][key2].includes(item);
+  };
+
+  const addCheckListDone = (key1, key2, item) => {
+    let newCheckListDone = {
+      ...checkListDone,
+    };
+    newCheckListDone[key1][key2].push(item);
+
+    setCheckListDone(newCheckListDone);
+  };
+
+  const removeCheckListDone = (key1, key2, item) => {
+    let newCheckListDone = {
+      ...checkListDone,
+    };
+    newCheckListDone[key1][key2] = newCheckListDone[key1][key2].filter(
+      i => i !== item,
+    );
+
+    setCheckListDone(newCheckListDone);
+  };
 
   const [selectedItems, setSelectedItems] = React.useState<string[]>([]);
 
@@ -370,64 +434,61 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = _props => {
               </View>
             </>
           ) : (
-            <>
-              <View style={{flex: 1, marginTop: 20}}>
+            <View style={{flex: 1}}>
+              {checkList ? (
                 <ProgressSteps
-                  labelColor={colors.greyText}
-                  completedLabelColor={colors.greyText}
+                  activeStepIconBorderColor={colors.red}
+                  progressBarColor={colors.greyText}
+                  completedProgressBarColor={colors.red}
+                  completedStepIconColor={colors.red}
                   disabledStepIconColor={colors.greyText}
-                  progressBarColor={colors.greyText}>
+                  activeLabelColor={colors.red}
+                  activeStepNumColor={colors.red}>
                   <ProgressStep
                     label="Antes"
-                    previousBtnTextStyle={{color: colors.black}}
                     nextBtnTextStyle={{color: colors.black}}
-                    nextBtnText="Siguiente"
-                    previousBtnText="Atras">
-                    {/* Text with a checbox at its right */}
+                    nextBtnText="Siguiente">
                     <View style={{alignItems: 'center'}}>
-                    {/* CheckBox y al costado el texto */}
-                      <Text>Elemento 1</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
-                      <Text>Elemento 2</Text>
+                      {Object.entries(checkList.Antes).map(([key2, lista]) => (
+                        <>
+                          <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+                            {key2}
+                          </Text>
+                          <View style={{width: '75%'}}>
+                            {lista.map(item => (
+                              <BouncyCheckbox
+                                size={25}
+                                fillColor="red"
+                                unfillColor="#FFFFFF"
+                                iconStyle={{borderColor: 'red'}}
+                                textStyle={{
+                                  fontFamily: 'JosefinSans-Regular',
+                                }}
+                                isChecked={verifyCheckListDone(
+                                  'Antes',
+                                  key2,
+                                  item,
+                                )}
+                                disableBuiltInState
+                                text={item}
+                                onPress={() => {
+                                  if (
+                                    verifyCheckListDone('Antes', key2, item)
+                                  ) {
+                                    removeCheckListDone('Antes', key2, item);
+                                  } else {
+                                    addCheckListDone('Antes', key2, item);
+                                  }
+                                  console.log(
+                                    JSON.stringify(checkListDone, 0, 2),
+                                  );
+                                }}
+                                style={{marginBottom: 8}}
+                              />
+                            ))}
+                          </View>
+                        </>
+                      ))}
                     </View>
                   </ProgressStep>
                   <ProgressStep
@@ -437,22 +498,115 @@ const TimerPage: NavigationFunctionComponent<TimerPageProps> = _props => {
                     nextBtnText="Siguiente"
                     previousBtnText="Atras">
                     <View style={{alignItems: 'center'}}>
-                      <Text>This is the content within step 2!</Text>
+                      {Object.entries(checkList.Durante).map(
+                        ([key2, lista]) => (
+                          <>
+                            <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+                              {key2}
+                            </Text>
+                            <View style={{width: '75%'}}>
+                              {lista.map(item => (
+                                <BouncyCheckbox
+                                  size={25}
+                                  fillColor="red"
+                                  unfillColor="#FFFFFF"
+                                  iconStyle={{borderColor: 'red'}}
+                                  textStyle={{
+                                    fontFamily: 'JosefinSans-Regular',
+                                  }}
+                                  isChecked={verifyCheckListDone(
+                                    'Durante',
+                                    key2,
+                                    item,
+                                  )}
+                                  disableBuiltInState
+                                  text={item}
+                                  onPress={() => {
+                                    if (
+                                      verifyCheckListDone('Durante', key2, item)
+                                    ) {
+                                      removeCheckListDone(
+                                        'Durante',
+                                        key2,
+                                        item,
+                                      );
+                                    } else {
+                                      addCheckListDone('Durante', key2, item);
+                                    }
+                                    console.log(
+                                      JSON.stringify(checkListDone, 0, 2),
+                                    );
+                                  }}
+                                  style={{marginBottom: 8}}
+                                />
+                              ))}
+                            </View>
+                          </>
+                        ),
+                      )}
                     </View>
                   </ProgressStep>
                   <ProgressStep
                     label="Después"
                     previousBtnTextStyle={{color: colors.black}}
-                    nextBtnTextStyle={{color: colors.black}}
-                    nextBtnText="Siguiente"
-                    previousBtnText="Atras">
+                    finishBtnTextStyle={{color: colors.black}}
+                    nextBtnTextStyle={{color: colors.red}}
+                    previousBtnText="Atras"
+                    finishBtnText="Terminar">
                     <View style={{alignItems: 'center'}}>
-                      <Text>This is the content within step 3!</Text>
+                      {Object.entries(checkList.Despues).map(
+                        ([key2, lista]) => (
+                          <>
+                            <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+                              {key2}
+                            </Text>
+                            <View style={{width: '75%'}}>
+                              {lista.map(item => (
+                                <BouncyCheckbox
+                                  size={25}
+                                  fillColor="red"
+                                  unfillColor="#FFFFFF"
+                                  iconStyle={{borderColor: 'red'}}
+                                  textStyle={{
+                                    fontFamily: 'JosefinSans-Regular',
+                                  }}
+                                  isChecked={verifyCheckListDone(
+                                    'Despues',
+                                    key2,
+                                    item,
+                                  )}
+                                  disableBuiltInState
+                                  text={item}
+                                  onPress={() => {
+                                    if (
+                                      verifyCheckListDone('Despues', key2, item)
+                                    ) {
+                                      removeCheckListDone(
+                                        'Despues',
+                                        key2,
+                                        item,
+                                      );
+                                    } else {
+                                      addCheckListDone('Despues', key2, item);
+                                    }
+                                    console.log(
+                                      JSON.stringify(checkListDone, 0, 2),
+                                    );
+                                  }}
+                                  style={{marginBottom: 8}}
+                                />
+                              ))}
+                            </View>
+                          </>
+                        ),
+                      )}
                     </View>
                   </ProgressStep>
                 </ProgressSteps>
-              </View>
-            </>
+              ) : (
+                <Text>Cargando...</Text>
+              )}
+            </View>
           )}
         </View>
       </ScrollView>

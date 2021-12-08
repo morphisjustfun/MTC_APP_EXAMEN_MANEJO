@@ -7,7 +7,7 @@ import {
   textStyles,
   userCardStyles,
 } from '../styles/TouringInfo';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import LogoTopBar from '../utils/components/LogoTopBar';
 import {CustomButton} from '../utils/components/Button';
 import {pages} from '../constants/pages';
